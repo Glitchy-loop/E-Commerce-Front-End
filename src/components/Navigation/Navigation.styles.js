@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 export const Header = styled.header`
   font-family: 'Roboto';
   border-bottom: 1px solid #c9c9c9;
+  max-width: 100rem;
+  margin: 0 auto;
 `
 
 export const Navigation = styled.nav`
@@ -67,11 +69,11 @@ export const StyledLink = styled(Link)`
 
 export const DesktopMenu = styled.div`
   display: none;
-  margin-right: 2rem;
   text-transform: uppercase;
   font-weight: 600;
   width: 100%;
   height: 100%;
+  justify-content: center;
   align-items: center;
   border-left: 1px solid #c9c9c9;
 

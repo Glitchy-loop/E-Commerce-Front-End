@@ -13,6 +13,5 @@ export const Button = styled.button`
 `
 
 export const StyledIcon = styled(FontAwesomeIcon)`
-  margin-right: 0.5rem;
   font-size: 1.1rem;
 `

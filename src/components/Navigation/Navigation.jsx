@@ -6,7 +6,7 @@ import SecondNavigation from "../SecondNavigation/SecondNavigation"
 
 const Navigation = () => {
   const [hiddenMenu, setHiddenMenu] = useState(false)
-  const number = "095 424 24 24"
+  const number = "095 424 24"
 
   return (
     <>
