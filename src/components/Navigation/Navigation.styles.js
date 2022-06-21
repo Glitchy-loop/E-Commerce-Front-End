@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 
 export const Header = styled.header`
-  background-color: grey;
   font-family: 'Roboto';
 `
 
@@ -23,21 +22,40 @@ export const Logo = styled.img`
 
 export const Menu = styled.nav`
   display: flex;
+  flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 3rem;
+  height: auto;
   justify-content: center;
-  transition: 1s;
+  text-transform: uppercase;
+
+  @media (min-width: 600px) {
+    display: none;
+  }
 `
 
-export const Icon = styled(FontAwesomeIcon)`
+export const MobileMenuIcon = styled(FontAwesomeIcon)`
   font-size: 2rem;
-  padding-right: 2rem;
+  margin-right: 2rem;
   cursor: pointer;
+
+  @media (min-width: 600px) {
+    display: none;
+  }
 `
 
 export const StyledLink = styled(Link)`
   color: #000;
   text-decoration: none;
   padding: 1rem;
+`
+
+export const DesktopMenu = styled.div`
+  display: none;
+  margin-right: 2rem;
+  text-transform: uppercase;
+
+  @media (min-width: 600px) {
+    display: flex;
+  }
 `
