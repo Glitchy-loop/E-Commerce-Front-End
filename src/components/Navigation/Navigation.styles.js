@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 
 export const Header = styled.header`
   font-family: 'Roboto';
-  border-bottom: 1px solid #c9c9c9;
-  max-width: 100rem;
+  border: 1px solid #c9c9c9;
   margin: 0 auto;
+  box-sizing: border-box;
 `
 
 export const Navigation = styled.nav`
@@ -83,14 +83,13 @@ export const DesktopMenu = styled.div`
   }
 `
 
-export const ContactNumber = styled.div`
-  font-size: 1.2rem;
+export const UserMenu = styled.div`
   display: flex;
-  white-space: nowrap;
-  padding: 0 2rem;
-  height: 100%;
   align-items: center;
-  border-left: 1px solid #c9c9c9;
+
+  button {
+    margin: 1rem;
+  }
 
   @media (max-width: 600px) {
     display: none;
