@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 const Button = ({ icon, type, children, handleClick }) => {
   return (
     <S.Button type={type} onClick={handleClick}>
-      <S.StyledIcon icon={icon} />
+      {icon && <S.StyledIcon icon={icon} />}
       {children}
     </S.Button>
   )
@@ -14,7 +14,7 @@ const Button = ({ icon, type, children, handleClick }) => {
 
 Button.propTypes = {
   type: PropTypes.oneOf(["submit", "reset", "button"]),
-  children: PropTypes.string.isRequired,
+  children: PropTypes.string,
   handleClick: PropTypes.func,
   icon: PropTypes.object,
 }
