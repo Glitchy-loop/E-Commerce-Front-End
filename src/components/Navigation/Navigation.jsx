@@ -10,14 +10,17 @@ const Navigation = () => {
   return (
     <S.Header>
       <S.Navigation>
-        <S.Logo src={logo} alt='logo' />
+        <S.LogoDiv>
+          <S.Logo src={logo} alt='C' />
+          <h4>COMFORT</h4>
+        </S.LogoDiv>
+
         {/* DESKTOP MENU */}
         <S.DesktopMenu>
           <S.StyledLink to='/'>Home</S.StyledLink>
           <S.StyledLink to='/Shop'>Shop</S.StyledLink>
           <S.StyledLink to='/Contacts'>Contacts</S.StyledLink>
         </S.DesktopMenu>
-
         {/* MOBILE MENU HAMBURGER */}
         <S.MobileMenuIcon
           onClick={() => {

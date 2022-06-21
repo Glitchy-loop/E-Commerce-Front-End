@@ -14,8 +14,15 @@ export const Navigation = styled.nav`
   justify-content: space-between;
 `
 
+export const LogoDiv = styled.div`
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+`
+
 export const Logo = styled.img`
-  max-width: 3rem;
+  max-width: 2.5rem;
+  margin-right: 0.2rem;
   height: auto;
   padding-left: 2rem;
 `
