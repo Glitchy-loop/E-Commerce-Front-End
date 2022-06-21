@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 export const Header = styled.header`
   font-family: 'Roboto';
+  border-bottom: 1px solid #c9c9c9;
 `
 
 export const Navigation = styled.nav`
@@ -12,12 +13,18 @@ export const Navigation = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (min-width: 600px) {
+    justify-content: space-around;
+  }
 `
 
 export const LogoDiv = styled.div`
   display: flex;
   align-items: center;
   text-transform: uppercase;
+  height: 100%;
+  align-items: center;
 `
 
 export const Logo = styled.img`
@@ -35,6 +42,7 @@ export const Menu = styled.nav`
   height: auto;
   justify-content: center;
   text-transform: uppercase;
+  font-weight: 600;
 
   @media (min-width: 600px) {
     display: none;
@@ -61,8 +69,28 @@ export const DesktopMenu = styled.div`
   display: none;
   margin-right: 2rem;
   text-transform: uppercase;
+  font-weight: 600;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  border-left: 1px solid #c9c9c9;
 
   @media (min-width: 600px) {
     display: flex;
+    margin-left: 2rem;
+  }
+`
+
+export const ContactNumber = styled.div`
+  font-size: 1.2rem;
+  display: flex;
+  white-space: nowrap;
+  padding: 0 2rem;
+  height: 100%;
+  align-items: center;
+  border-left: 1px solid #c9c9c9;
+
+  @media (max-width: 600px) {
+    display: none;
   }
 `
