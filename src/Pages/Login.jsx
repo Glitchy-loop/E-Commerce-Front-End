@@ -27,9 +27,9 @@ const Register = () => {
         return setError(data.err)
       }
 
-      console.log(data)
       localStorage.setItem("token", data.token)
-      navigate("/home")
+      localStorage.setItem("roles", data.roles)
+      navigate("/")
       return setError("Login Successful")
     } catch (err) {
       return setError(err.message)

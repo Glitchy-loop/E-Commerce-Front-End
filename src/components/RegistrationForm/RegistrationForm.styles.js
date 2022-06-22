@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Form = styled.form`
   margin: 0 auto;
@@ -16,4 +17,8 @@ export const Form = styled.form`
   input[type='radio'] {
     width: 10%;
   }
+`
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
 `

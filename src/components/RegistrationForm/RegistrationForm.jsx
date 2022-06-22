@@ -63,6 +63,9 @@ const RegistrationForm = ({ handleSubmit }) => {
           }
         />
         <Button type='submit'>Register</Button>
+        <S.StyledLink to='/login'>
+          <Button>Already have account?</Button>
+        </S.StyledLink>
       </S.Form>
     </Section>
   )

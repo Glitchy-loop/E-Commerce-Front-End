@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 
 const Navigation = () => {
   const [hiddenMenu, setHiddenMenu] = useState(false)
-  const number = "095 424 24"
+  const token = localStorage.getItem("token")
 
   return (
     <>
@@ -17,10 +17,11 @@ const Navigation = () => {
         <S.Header>
           <S.Navigation>
             <S.LogoDiv>
-              <S.Logo src={logo} alt='C' />
+              <Link to='/'>
+                <S.Logo src={logo} alt='C' />
+              </Link>
               <h4>COMFORT</h4>
             </S.LogoDiv>
-
             {/* DESKTOP MENU */}
             <S.DesktopMenu>
               <S.StyledLink to='/'>Home</S.StyledLink>
@@ -30,11 +31,18 @@ const Navigation = () => {
             {/* USER MENU */}
             <S.UserMenu>
               <Link to='/cart'>
-                <Button icon={faBasketShopping} to='/aaa'></Button>
+                <Button icon={faBasketShopping}></Button>
               </Link>
-              <Link to='/my-account'>
-                <Button icon={faUser} to='/aaa'></Button>
-              </Link>
+              {!token && (
+                <Link to='/register'>
+                  <Button icon={faUser}></Button>
+                </Link>
+              )}
+              {token && (
+                <Link to='/dashboard'>
+                  <Button icon={faUser}></Button>
+                </Link>
+              )}
             </S.UserMenu>
             {/* MOBILE MENU HAMBURGER */}
             <S.MobileMenuIcon
@@ -50,7 +58,7 @@ const Navigation = () => {
               <S.StyledLink to='/'>Home</S.StyledLink>
               <S.StyledLink to='/shop'>Shop</S.StyledLink>
               <S.StyledLink to='/contacts'>Contacts</S.StyledLink>
-              <S.StyledLink to='/my-account'>My-Account</S.StyledLink>
+              <S.StyledLink to='/dashboard'>My-Account</S.StyledLink>
               <S.StyledLink to='/cart'>CART</S.StyledLink>
             </S.Menu>
           )}
