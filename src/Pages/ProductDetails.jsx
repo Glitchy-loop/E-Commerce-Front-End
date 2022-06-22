@@ -4,6 +4,7 @@ import Container from "../components/Container/Container"
 import Product from "../components/Product/Product"
 import PropTypes from "prop-types"
 import Title from "../components/Title/Title"
+import Loader from "../components/Loader/Loader"
 
 const ProductDetails = () => {
   const { id } = useParams()
@@ -29,7 +30,7 @@ const ProductDetails = () => {
     <>
       <Container>
         <Title title={`Product details`} />
-        {!product && <div>Loading...</div>}
+        {!product && <Loader />}
         {product && product.length === 0 && <div>No product found.</div>}
         {product &&
           product.length > 0 &&

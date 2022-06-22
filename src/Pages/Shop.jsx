@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Container from "../components/Container/Container"
+import Loader from "../components/Loader/Loader"
 import Notification from "../components/Notification/Notification"
 import ProductList from "../components/ProductList/ProductList"
 import Section from "../components/Section/Section"
@@ -34,9 +35,10 @@ const Shop = () => {
   return (
     <Container>
       <Section>
-        <Title title='Welcome' />
+        <Title title='Shop' />
         {error && <Notification>{error}</Notification>}
-        {!products && <div>Loading...</div>}
+
+        {!products && <Loader />}
         {products && products.length > 0 && <ProductList products={products} />}
       </Section>
     </Container>

@@ -7,6 +7,7 @@ import Login from './Pages/Login'
 import Shop from './Pages/Shop'
 import Dashboard from './Pages/Dashboard'
 import ProductDetails from './Pages/ProductDetails'
+import Cart from './Pages/Cart'
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
         <Route exact path='/register' element={<Register />} />
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/shop' element={<Shop />} />
+        <Route exact path='/cart' element={<Cart />} />
         <Route
           exact
           path='/dashboard'
