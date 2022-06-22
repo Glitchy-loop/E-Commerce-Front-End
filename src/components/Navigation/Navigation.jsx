@@ -7,9 +7,14 @@ import Button from "../Button/Button"
 import { faUser, faBasketShopping } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
 
+const authLinks = [{ url: "/dashboard", title: "Dashboard" }]
+const publicLinks = [{ url: "/login", title: "Login" }]
+// const token = localStorage.getItem("token")
+
 const Navigation = () => {
   const [hiddenMenu, setHiddenMenu] = useState(false)
-  const token = localStorage.getItem("token")
+
+  const links = localStorage.getItem("token") ? authLinks : publicLinks
 
   return (
     <>
@@ -33,16 +38,12 @@ const Navigation = () => {
               <Link to='/cart'>
                 <Button icon={faBasketShopping}></Button>
               </Link>
-              {!token && (
-                <Link to='/register'>
-                  <Button icon={faUser}></Button>
-                </Link>
-              )}
-              {token && (
-                <Link to='/dashboard'>
-                  <Button icon={faUser}></Button>
-                </Link>
-              )}
+              {links &&
+                links.map((link) => (
+                  <Link key={link} to={link.url}>
+                    <Button icon={faUser}></Button>
+                  </Link>
+                ))}
             </S.UserMenu>
             {/* MOBILE MENU HAMBURGER */}
             <S.MobileMenuIcon
