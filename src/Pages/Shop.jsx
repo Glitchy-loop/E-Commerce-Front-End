@@ -37,7 +37,6 @@ const Shop = () => {
       <Section>
         <Title title='Shop' />
         {error && <Notification>{error}</Notification>}
-
         {!products && <Loader />}
         {products && products.length > 0 && <ProductList products={products} />}
       </Section>
