@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import Button from "../Button/Button"
-import Checkbox from "../Checkbox/Checkbox"
+import Radio from "../Radio/Radio"
 import Section from "../Section/Section"
 import TextInput from "../TextInput/TextInput"
 
@@ -42,7 +42,7 @@ const RegistrationForm = ({ handleSubmit }) => {
             })
           }
         />
-        <Checkbox
+        <Radio
           label='Client'
           name='roles'
           value='0'
@@ -50,7 +50,7 @@ const RegistrationForm = ({ handleSubmit }) => {
             updateRegisterValues({ ...registerValues, roles: roleValue })
           }
         />
-        <Checkbox
+        <Radio
           label='Admin'
           name='roles'
           value='1'

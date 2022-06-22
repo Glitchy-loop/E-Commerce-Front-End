@@ -1,12 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-const Checkbox = ({ label, handleChange, value }) => {
+const Radio = ({ label, handleChange, value, name }) => {
   return (
     <label>
       {label}
       <input
         type='radio'
+        name={name}
         value={value}
         onChange={(e) => handleChange(e.target.value)}
       />
@@ -14,6 +15,6 @@ const Checkbox = ({ label, handleChange, value }) => {
   )
 }
 
-Checkbox.propTypes = {}
+Radio.propTypes = {}
 
-export default Checkbox
+export default Radio
