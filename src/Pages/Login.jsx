@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Container from "../components/Container/Container"
 import Notification from "../components/Notification/Notification"
-import RegistrationForm from "../components/RegistrationForm/RegistrationForm"
+import LoginForm from "../components/LoginForm/LoginForm"
 import { useNavigate } from "react-router-dom"
 
 const Register = () => {
@@ -12,7 +12,7 @@ const Register = () => {
   const registerUser = async (inputs) => {
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/v1/users/register`,
+        `${process.env.REACT_APP_BACKEND_URL}/v1/users/login`,
         {
           method: "POST",
           headers: {
@@ -27,8 +27,10 @@ const Register = () => {
         return setError(data.err)
       }
 
-      navigate("/login")
-      return setError("Registration Successful")
+      console.log(data)
+      localStorage.setItem("token", data.token)
+      navigate("/home")
+      return setError("Login Successful")
     } catch (err) {
       return setError(err.message)
     }
@@ -38,7 +40,7 @@ const Register = () => {
     <>
       <Container>
         {error && <Notification>{error}</Notification>}
-        <RegistrationForm handleSubmit={registerUser} />
+        <LoginForm handleSubmit={registerUser} />
       </Container>
     </>
   )
