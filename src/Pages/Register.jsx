@@ -3,12 +3,14 @@ import Container from "../components/Container/Container"
 import Notification from "../components/Notification/Notification"
 import RegistrationForm from "../components/RegistrationForm/RegistrationForm"
 import TextInput from "../components/TextInput/TextInput"
+import { useNavigate } from "react-router-dom"
 
 const Register = () => {
   const [error, setError] = useState()
 
+  const navigate = useNavigate()
+
   const registerUser = async (inputs) => {
-    console.log(inputs)
     try {
       const res = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/v1/users/register`,
@@ -26,6 +28,7 @@ const Register = () => {
         return setError(data.err)
       }
 
+      navigate("/login")
       return setError("Registration Successful")
     } catch (err) {
       return setError(err.message)
@@ -35,7 +38,7 @@ const Register = () => {
   return (
     <>
       <Container>
-        {/* {error && <Notification>{error}</Notification>} */}
+        {error && <Notification>{error}</Notification>}
         <RegistrationForm handleSubmit={registerUser} />
       </Container>
     </>

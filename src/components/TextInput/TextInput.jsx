@@ -1,20 +1,19 @@
 import React from "react"
 import PropTypes from "prop-types"
+import * as S from "./TextInput.styles"
 
 const TextInput = ({ type, label, placeholder, value, handleChange }) => {
   return (
-    <div>
-      <label htmlFor={label}>{label}</label>
-      <div>
-        <input
-          id={label}
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={(e) => handleChange(e.target.value)}
-        />
-      </div>
-    </div>
+    <>
+      <S.Label htmlFor={label}>{label}</S.Label>
+      <S.Input
+        id={label}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => handleChange(e.target.value)}
+      />
+    </>
   )
 }
 

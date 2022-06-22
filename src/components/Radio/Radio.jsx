@@ -1,20 +1,25 @@
 import React from "react"
 import PropTypes from "prop-types"
+import * as S from "./Radio.styles"
 
 const Radio = ({ label, handleChange, value, name }) => {
   return (
-    <label>
+    <S.LabelRadio>
       {label}
-      <input
+      <S.Radio
         type='radio'
         name={name}
         value={value}
         onChange={(e) => handleChange(e.target.value)}
       />
-    </label>
+    </S.LabelRadio>
   )
 }
 
-Radio.propTypes = {}
+Radio.propTypes = {
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+}
 
 export default Radio

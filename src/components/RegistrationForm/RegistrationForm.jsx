@@ -3,13 +3,16 @@ import Button from "../Button/Button"
 import Radio from "../Radio/Radio"
 import Section from "../Section/Section"
 import TextInput from "../TextInput/TextInput"
+import Title from "../Title/Title"
+import * as S from "./RegistrationForm.styles"
 
 const RegistrationForm = ({ handleSubmit }) => {
   const [registerValues, updateRegisterValues] = useState()
 
   return (
     <Section>
-      <form
+      <Title title='Register a new user.' />
+      <S.Form
         onSubmit={(e) => {
           e.preventDefault()
           handleSubmit(registerValues)
@@ -17,7 +20,7 @@ const RegistrationForm = ({ handleSubmit }) => {
       >
         <TextInput
           type='text'
-          label='Name'
+          label='First name'
           placeholder='name'
           handleChange={(nameValue) =>
             updateRegisterValues({ ...registerValues, name: nameValue })
@@ -26,7 +29,7 @@ const RegistrationForm = ({ handleSubmit }) => {
         <TextInput
           type='email'
           label='Email'
-          placeholder='info@example.com'
+          placeholder='example@email.com'
           handleChange={(emailValue) =>
             updateRegisterValues({ ...registerValues, email: emailValue })
           }
@@ -42,8 +45,9 @@ const RegistrationForm = ({ handleSubmit }) => {
             })
           }
         />
+        <p>What role you wish to register with?</p>
         <Radio
-          label='Client'
+          label='Customer'
           name='roles'
           value='0'
           handleChange={(roleValue) =>
@@ -59,7 +63,7 @@ const RegistrationForm = ({ handleSubmit }) => {
           }
         />
         <Button type='submit'>Register</Button>
-      </form>
+      </S.Form>
     </Section>
   )
 }
