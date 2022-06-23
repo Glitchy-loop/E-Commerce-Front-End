@@ -6,7 +6,7 @@ import Title from "../Title/Title"
 import * as S from "./LoginForm.styles"
 
 const LoginForm = ({ handleSubmit }) => {
-  const [registerValues, updateRegisterValues] = useState()
+  const [loginValues, updateLoginValues] = useState()
 
   return (
     <Section>
@@ -14,7 +14,7 @@ const LoginForm = ({ handleSubmit }) => {
       <S.Form
         onSubmit={(e) => {
           e.preventDefault()
-          handleSubmit(registerValues)
+          handleSubmit(loginValues)
         }}
       >
         <TextInput
@@ -22,7 +22,7 @@ const LoginForm = ({ handleSubmit }) => {
           label='Email'
           placeholder='example@email.com'
           handleChange={(emailValue) =>
-            updateRegisterValues({ ...registerValues, email: emailValue })
+            updateLoginValues({ ...loginValues, email: emailValue })
           }
         />
         <TextInput
@@ -30,8 +30,8 @@ const LoginForm = ({ handleSubmit }) => {
           label='Password'
           placeholder='password'
           handleChange={(passwordValue) =>
-            updateRegisterValues({
-              ...registerValues,
+            updateLoginValues({
+              ...loginValues,
               password: passwordValue,
             })
           }

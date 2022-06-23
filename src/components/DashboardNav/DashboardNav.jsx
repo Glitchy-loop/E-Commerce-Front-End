@@ -1,14 +1,15 @@
 import React from "react"
-import PropTypes from "prop-types"
+import * as S from "./DashboardNav.styles"
 
 const DashboardNav = ({ links }) => {
   return (
-    <nav>
-      {links && links.map((link) => <li to={link.url}>{link.title}</li>)}
-    </nav>
+    <S.Nav>
+      {links &&
+        links.map((link) => (
+          <S.StyledLinks to={link.url}>{link.title}</S.StyledLinks>
+        ))}
+    </S.Nav>
   )
 }
-
-DashboardNav.propTypes = {}
 
 export default DashboardNav
