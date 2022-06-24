@@ -4,24 +4,27 @@ import DashboardNav from "../components/DashboardNav/DashboardNav"
 import Title from "../components/Title/Title"
 
 const adminLinks = [
+  { url: "/dashboard", title: "Dashboard" },
   { url: "/dashboard/add", title: "Add product" },
   { url: "/dashboard/orders", title: "Orders" },
 ]
-
-const clientLinks = [{ url: "/dashboard/orders", title: "Orders" }]
+const clientLinks = [
+  { url: "/dashboard", title: "Dashboard" },
+  { url: "/dashboard/orders", title: "Orders" },
+]
+const roles = localStorage.getItem("roles")
+const links = localStorage.getItem("roles") === "1" ? adminLinks : clientLinks
 
 const Dashboard = () => {
-  const roles = localStorage.getItem("roles")
-
-  const links = localStorage.getItem("roles") === "1" ? adminLinks : clientLinks
-
   return (
     <Container>
       <Title title='Dashboard' />
-
       {roles === "1" && <DashboardNav links={links}></DashboardNav>}
-
       {roles === "0" && <DashboardNav links={links}></DashboardNav>}
+
+      <p style={{ textAlign: "center" }}>
+        Welcome to your dashboard. From here you can manager your orders.
+      </p>
     </Container>
   )
 }

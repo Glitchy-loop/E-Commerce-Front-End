@@ -22,7 +22,7 @@ const OrderList = ({ orders, button }) => {
               <S.Td>{order.orderId}</S.Td>
               <S.Td>{order.email}</S.Td>
               <S.Td>{order.title}</S.Td>
-              <S.Td>{order.price}</S.Td>
+              <S.Td>€{order.price}</S.Td>
               <S.Td>{order.timestamp}</S.Td>
               {button && (
                 <S.Td>
