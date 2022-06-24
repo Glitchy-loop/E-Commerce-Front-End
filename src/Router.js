@@ -9,6 +9,7 @@ import Dashboard from './Pages/Dashboard'
 import ProductDetails from './Pages/ProductDetails'
 import Cart from './Pages/Cart'
 import AddProduct from './Pages/AddProduct'
+import Orders from './Pages/Orders'
 
 const Router = () => {
   return (
@@ -33,6 +34,7 @@ const Router = () => {
         />
         <Route exact path='/product/:id' element={<ProductDetails />} />
         <Route exact path='/dashboard/add' element={<AddProduct />} />
+        <Route exact path='/dashboard/orders' element={<Orders />} />
       </Routes>
     </BrowserRouter>
   )

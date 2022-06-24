@@ -8,7 +8,7 @@ const ProductList = ({ products }) => {
     <S.ProductList>
       {products &&
         products.map((product) => (
-          <S.StyledLink to={`/product/${product.id}`}>
+          <S.StyledLink key={product.title} to={`/product/${product.id}`}>
             <Product
               key={product.title}
               img={product.img}
