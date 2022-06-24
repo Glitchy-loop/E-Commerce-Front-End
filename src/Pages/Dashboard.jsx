@@ -21,11 +21,7 @@ const Dashboard = () => {
 
       {roles === "1" && <DashboardNav links={links}></DashboardNav>}
 
-      {roles === "0" && (
-        <nav>
-          <li>Orders</li>
-        </nav>
-      )}
+      {roles === "0" && <DashboardNav links={links}></DashboardNav>}
     </Container>
   )
 }

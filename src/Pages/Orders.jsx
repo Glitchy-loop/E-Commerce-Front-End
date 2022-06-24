@@ -7,20 +7,43 @@ import OrderList from "../components/Orders/OrderList"
 import Loader from "../components/Loader/Loader"
 
 const admin = localStorage.getItem("roles") === "1"
+const customer = localStorage.getItem("roles") === "0"
 
+// Get all orders
 const Orders = () => {
   const [orders, setOrders] = useState()
   const [error, setError] = useState()
 
-  // const orderz = [
-  //   { userId: 8, productId: 2, date: "2022-06-24 09:07:38" },
-  //   { userId: 9, productId: 2, date: "2022-06-24 10:11:38" },
-  // ]
-
-  const getOrders = async () => {
+  const getAllOrders = async () => {
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/v1/orders/details`
+        `${process.env.REACT_APP_BACKEND_URL}/v1/orders/all`,
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+      const data = await res.json()
+
+      setOrders(data)
+    } catch (err) {
+      return setError(err.message)
+    }
+  }
+
+  // Get customer orders
+  const getCustomerOrders = async () => {
+    try {
+      const res = await fetch(
+        `${
+          process.env.REACT_APP_BACKEND_URL
+        }/v1/orders/customer/${localStorage.getItem("userId")}`,
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
       )
       const data = await res.json()
 
@@ -31,15 +54,19 @@ const Orders = () => {
   }
 
   useEffect(() => {
-    getOrders()
+    admin && getAllOrders()
+    customer && getCustomerOrders()
   }, [])
 
   return (
     <Container>
-      {admin && <Title title='Orders' />}
+      <Title title='Orders' />
       {error && <Notification>{error}</Notification>}
+
       {!orders && <Loader />}
-      {orders && <OrderList orders={orders} />}
+      {admin && orders && <OrderList orders={orders} />}
+
+      {customer && orders && <OrderList orders={orders} />}
     </Container>
   )
 }

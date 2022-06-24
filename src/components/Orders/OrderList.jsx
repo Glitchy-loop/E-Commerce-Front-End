@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import Button from "../Button/Button"
 import * as S from "./OrderList.styles"
 
-const OrderList = ({ orders }) => {
+const OrderList = ({ orders, button }) => {
   return (
     <S.Table>
       <thead>
@@ -24,9 +24,11 @@ const OrderList = ({ orders }) => {
               <S.Td>{order.title}</S.Td>
               <S.Td>{order.price}</S.Td>
               <S.Td>{order.timestamp}</S.Td>
-              <S.Td>
-                <Button>Delete</Button>
-              </S.Td>
+              {button && (
+                <S.Td>
+                  <Button>Delete</Button>
+                </S.Td>
+              )}
             </tr>
           ))}
       </tbody>
@@ -38,7 +40,7 @@ OrderList.propTypes = {
   orders: PropTypes.arrayOf(
     PropTypes.shape({
       orderId: PropTypes.number.isRequired,
-      email: PropTypes.string.isRequired,
+      email: PropTypes.string,
       title: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,
       timestamp: PropTypes.string.isRequired,

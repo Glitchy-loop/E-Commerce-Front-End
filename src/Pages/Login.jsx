@@ -27,6 +27,7 @@ const Register = () => {
         return setError(data.err)
       }
 
+      localStorage.setItem("userId", data.accountId)
       localStorage.setItem("token", data.token)
       localStorage.setItem("roles", data.roles)
       navigate("/")
