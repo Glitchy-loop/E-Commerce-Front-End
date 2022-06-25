@@ -6,6 +6,7 @@ import Title from "../components/Title/Title"
 import OrderList from "../components/Orders/OrderList"
 import Loader from "../components/Loader/Loader"
 import DashboardNav from "../components/DashboardNav/DashboardNav"
+import Footer from "../components/Footer/Footer"
 
 const admin = localStorage.getItem("roles") === "1"
 const customer = localStorage.getItem("roles") === "0"
@@ -73,20 +74,23 @@ const Orders = () => {
   }, [])
 
   return (
-    <Container>
-      <Title title='Orders' />
+    <>
+      <Container>
+        <Title title='Orders' />
 
-      {roles === "1" && <DashboardNav links={links}></DashboardNav>}
+        {roles === "1" && <DashboardNav links={links}></DashboardNav>}
 
-      {roles === "0" && <DashboardNav links={links}></DashboardNav>}
+        {roles === "0" && <DashboardNav links={links}></DashboardNav>}
 
-      {error && <Notification>{error}</Notification>}
+        {error && <Notification>{error}</Notification>}
 
-      {!orders && <Loader />}
-      {admin && orders && <OrderList orders={orders} />}
+        {!orders && <Loader />}
+        {admin && orders && <OrderList orders={orders} />}
 
-      {customer && orders && <OrderList orders={orders} />}
-    </Container>
+        {customer && orders && <OrderList orders={orders} />}
+      </Container>
+      <Footer />
+    </>
   )
 }
 

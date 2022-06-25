@@ -1,10 +1,10 @@
 import React, { useState } from "react"
 import Container from "../components/Container/Container"
-import Section from "../components/Section/Section"
 import Title from "../components/Title/Title"
 import AddProductForm from "../components/AddProduct/AddProductForm"
 import Notification from "../components/Notification/Notification"
 import { useNavigate } from "react-router-dom"
+import Footer from "../components/Footer/Footer"
 
 const token = localStorage.getItem("token")
 
@@ -34,7 +34,6 @@ const AddProduct = () => {
         }
       )
       const data = await res.json()
-      console.log(data)
 
       if (data.err) {
         return setError(data.err)
@@ -50,13 +49,14 @@ const AddProduct = () => {
   }
 
   return (
-    <Container>
-      <Title title='Add a new product' />
-      <Section>
+    <>
+      <Container>
+        <Title title='Add a new product' />
         {error && <Notification>{error}</Notification>}
         <AddProductForm handleSubmit={addNewProduct} />
-      </Section>
-    </Container>
+      </Container>
+      <Footer />
+    </>
   )
 }
 

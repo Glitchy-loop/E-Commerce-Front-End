@@ -6,7 +6,9 @@ const DashboardNav = ({ links }) => {
     <S.Nav>
       {links &&
         links.map((link) => (
-          <S.StyledLinks to={link.url}>{link.title}</S.StyledLinks>
+          <S.StyledLinks key={link.title} to={link.url}>
+            {link.title}
+          </S.StyledLinks>
         ))}
     </S.Nav>
   )

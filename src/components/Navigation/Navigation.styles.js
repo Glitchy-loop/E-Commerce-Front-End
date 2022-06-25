@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom'
 
 export const Header = styled.header`
   font-family: 'Roboto';
-  border: 1px solid #c9c9c9;
+  border-bottom: 0.1rem solid #c9c9c9;
   margin: 0 auto;
   box-sizing: border-box;
+  padding: 2rem;
 `
 
 export const Navigation = styled.nav`
@@ -75,7 +76,6 @@ export const DesktopMenu = styled.div`
   height: 100%;
   justify-content: center;
   align-items: center;
-  border-left: 1px solid #c9c9c9;
 
   @media (min-width: 600px) {
     display: flex;

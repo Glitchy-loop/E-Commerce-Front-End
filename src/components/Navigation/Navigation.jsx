@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 
 const authLinks = [{ url: "/dashboard", title: "Dashboard" }]
 const publicLinks = [{ url: "/login", title: "Login" }]
-// const token = localStorage.getItem("token")
+const token = localStorage.getItem("token")
 
 const Navigation = () => {
   const [hiddenMenu, setHiddenMenu] = useState(false)
@@ -61,6 +61,14 @@ const Navigation = () => {
               <S.StyledLink to='/contacts'>Contacts</S.StyledLink>
               <S.StyledLink to='/dashboard'>My-Account</S.StyledLink>
               <S.StyledLink to='/cart'>CART</S.StyledLink>
+              {token && (
+                <S.StyledLink
+                  to='/'
+                  onClick={() => localStorage.removeItem("token")}
+                >
+                  Log out
+                </S.StyledLink>
+              )}
             </S.Menu>
           )}
         </S.Header>

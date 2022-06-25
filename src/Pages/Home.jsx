@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react"
 import Container from "../components/Container/Container"
 import Section from "../components/Section/Section"
-import { Navigation, Autoplay } from "swiper"
-import { Swiper, SwiperSlide } from "swiper/react"
 
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
-import "swiper/css/scrollbar"
 import Loader from "../components/Loader/Loader"
 import Notification from "../components/Notification/Notification"
+import Slider from "../components/Slider/Slider"
+import Footer from "../components/Footer/Footer"
 
 const Home = () => {
   const [products, setProducts] = useState()
@@ -32,30 +28,18 @@ const Home = () => {
   }, [])
 
   return (
-    <Container>
-      <Section>
-        {!products && <Loader />}
-        {products && products.length === 0 && (
-          <Notification>No products found</Notification>
-        )}
-        {products && products.length > 0 && (
-          <Swiper
-            style={{ width: "100%" }}
-            navigation={true}
-            autoplay={true}
-            loop={true}
-            modules={[Navigation, Autoplay]}
-          >
-            {products &&
-              products.map((product) => (
-                <SwiperSlide className='swiper-slide'>
-                  {product.title}
-                </SwiperSlide>
-              ))}
-          </Swiper>
-        )}
-      </Section>
-    </Container>
+    <>
+      <Container>
+        <Section>
+          {!products && <Loader />}
+          {products && products.length === 0 && (
+            <Notification>No products found</Notification>
+          )}
+          {products && products.length > 0 && <Slider items={products} />}
+        </Section>
+      </Container>
+      <Footer />
+    </>
   )
 }
 

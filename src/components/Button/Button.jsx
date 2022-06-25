@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import * as S from "./Button.styles"
 import { Link } from "react-router-dom"
 
-const Button = ({ icon, type, children, handleClick }) => {
+const Button = ({ outline, icon, type, children, handleClick }) => {
   return (
     <S.Button type={type} onClick={handleClick}>
       {icon && <S.StyledIcon icon={icon} />}

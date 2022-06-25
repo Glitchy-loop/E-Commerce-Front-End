@@ -5,6 +5,7 @@ import Product from "../components/Product/Product"
 import PropTypes from "prop-types"
 import Title from "../components/Title/Title"
 import Loader from "../components/Loader/Loader"
+import Footer from "../components/Footer/Footer"
 
 const ProductDetails = () => {
   const { id } = useParams()
@@ -45,6 +46,7 @@ const ProductDetails = () => {
             />
           ))}
       </Container>
+      <Footer />
     </>
   )
 }

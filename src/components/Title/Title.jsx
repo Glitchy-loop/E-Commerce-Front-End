@@ -5,8 +5,8 @@ import * as S from "./Title.styles"
 const Title = ({ title, subtitle }) => {
   return (
     <S.Title>
-      <h3>{title}</h3>
-      {subtitle && <S.P>{subtitle}</S.P>}
+      <S.Main>{title}</S.Main>
+      {subtitle && <S.Subtitle>{subtitle}</S.Subtitle>}
     </S.Title>
   )
 }
