@@ -17,8 +17,10 @@ const publicLinks = [{ url: "/login", title: "Login" }]
 const Navigation = () => {
   const [hiddenMenu, setHiddenMenu] = useState(false)
   const [token, setToken] = useState(localStorage.getItem("token"))
+  const [roles, setRoles] = useState(localStorage.getItem("roles"))
+  const [userId, setUserId] = useState(localStorage.getItem("userId"))
 
-  const links = localStorage.getItem("token") ? authLinks : publicLinks
+  const links = token ? authLinks : publicLinks
 
   return (
     <>
@@ -69,18 +71,6 @@ const Navigation = () => {
               <S.StyledLink to='/contacts'>Contacts</S.StyledLink>
               <S.StyledLink to='/dashboard'>My-Account</S.StyledLink>
               <S.StyledLink to='/cart'>CART</S.StyledLink>
-              {token && (
-                <S.StyledLink
-                  to='/'
-                  onClick={() => {
-                    localStorage.removeItem("token")
-                    localStorage.removeItem("roles")
-                    localStorage.removeItem("userId")
-                  }}
-                >
-                  Log out
-                </S.StyledLink>
-              )}
             </S.Menu>
           )}
         </S.Header>

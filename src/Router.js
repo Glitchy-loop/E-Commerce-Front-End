@@ -11,6 +11,7 @@ import Cart from './Pages/Cart'
 import AddProduct from './Pages/AddProduct'
 import Orders from './Pages/Orders'
 import ViewProducts from './Pages/ViewProducts'
+import Contacts from './Pages/Contacts'
 
 const Router = () => {
   // const [token, setToken] = useState(localStorage.getItem('token'))
@@ -24,6 +25,7 @@ const Router = () => {
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/shop' element={<Shop />} />
         <Route exact path='/cart' element={<Cart />} />
+        <Route exact path='/contacts' element={<Contacts />} />
         <Route exact path='/dashboard' element={<Dashboard />} />
         <Route exact path='/product/:id' element={<ProductDetails />} />
         <Route exact path='/dashboard/add' element={<AddProduct />} />
