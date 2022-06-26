@@ -19,6 +19,6 @@ export const Input = styled.input`
   transition: 250ms;
 
   &:focus {
-    border-color: green;
+    border-color: #ed8136;
   }
 `

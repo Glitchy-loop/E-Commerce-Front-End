@@ -8,4 +8,5 @@ export const Notification = styled.div`
   text-align: center;
   margin: 0 auto;
   box-sizing: border-box;
+  margin: 1rem 0;
 `

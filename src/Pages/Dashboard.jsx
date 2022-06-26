@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import Container from "../components/Container/Container"
 import DashboardNav from "../components/DashboardNav/DashboardNav"
 import Footer from "../components/Footer/Footer"
@@ -18,6 +19,15 @@ const roles = localStorage.getItem("roles")
 const links = localStorage.getItem("roles") === "1" ? adminLinks : clientLinks
 
 const Dashboard = () => {
+  const navigate = useNavigate()
+
+  const [token, setToken] = useState(localStorage.getItem("token"))
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login")
+    }
+  }, [])
   return (
     <>
       <Container>

@@ -66,6 +66,21 @@ export const StyledLink = styled(Link)`
   color: #000;
   text-decoration: none;
   padding: 1rem;
+
+  &::after {
+    content: '';
+    position: relative;
+    display: block;
+    border-bottom: 0.15rem solid #000;
+    width: 0;
+    transition: 500ms;
+    margin: 0 auto;
+    margin-top: 0.2rem;
+  }
+  &:hover::after {
+    border-bottom: 0.15rem solid #000;
+    width: 100%;
+  }
 `
 
 export const DesktopMenu = styled.div`
