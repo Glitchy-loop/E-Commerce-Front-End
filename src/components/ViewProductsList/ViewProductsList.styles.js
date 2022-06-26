@@ -22,4 +22,5 @@ export const Td = styled.td`
   border: 1px solid grey;
   padding: 1rem;
   text-align: center;
+  overflow-y: auto;
 `

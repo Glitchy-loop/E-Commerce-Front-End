@@ -13,6 +13,7 @@ const customer = localStorage.getItem("roles") === "0"
 
 const adminLinks = [
   { url: "/dashboard", title: "Dashboard" },
+  { url: "/dashboard/view-products", title: "View products" },
   { url: "/dashboard/add", title: "Add product" },
   { url: "/dashboard/orders", title: "Orders" },
 ]
@@ -87,7 +88,7 @@ const Orders = () => {
         {!orders && <Loader />}
         {admin && orders && <OrderList orders={orders} />}
 
-        {customer && orders && <OrderList orders={orders} />}
+        {customer && orders && <OrderList orders={orders} button={"aaa"} />}
       </Container>
       <Footer />
     </>

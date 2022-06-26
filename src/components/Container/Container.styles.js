@@ -14,6 +14,7 @@ const fadeIn = keyframes`
 export const Container = styled.div`
   max-width: 70rem;
   margin: 0 auto;
+  padding: 0 1rem;
   font-family: 'Roboto';
   animation: ${fadeIn} 250ms forwards ease;
 `

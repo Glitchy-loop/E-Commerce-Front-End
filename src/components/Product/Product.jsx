@@ -1,8 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 import * as S from "./Product.styles"
+import Button from "../Button/Button"
 
-const Product = ({ img, category, title, price, description }) => {
+const Product = ({ img, category, title, price, description, addToCart }) => {
   return (
     <S.Product>
       <S.Img
@@ -13,16 +14,18 @@ const Product = ({ img, category, title, price, description }) => {
       <S.Category>{category}</S.Category>
       <S.Price>{price}</S.Price>
       {description && <S.Description>{description}</S.Description>}
+      {addToCart && <Button handleClick={addToCart}>Add to cart</Button>}
     </S.Product>
   )
 }
 
 Product.propTypes = {
-  img: PropTypes.string.isRequired, // ! ADD REQUIRED
+  img: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   category: PropTypes.string,
   price: PropTypes.number.isRequired,
   description: PropTypes.string,
+  addToCart: PropTypes.func,
 }
 
 export default Product

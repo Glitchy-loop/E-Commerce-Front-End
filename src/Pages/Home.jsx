@@ -16,7 +16,7 @@ const Home = () => {
         `${process.env.REACT_APP_BACKEND_URL}/v1/products`
       )
       const data = await res.json()
-      console.log(data)
+
       return setProducts(data)
     } catch (err) {
       console.log(err)

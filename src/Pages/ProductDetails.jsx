@@ -10,7 +10,9 @@ import Footer from "../components/Footer/Footer"
 const ProductDetails = () => {
   const { id } = useParams()
   const [product, setProduct] = useState()
+  const [cartItems, setCartItems] = useState([])
 
+  // Get product data
   const getData = async () => {
     try {
       const res = await fetch(
@@ -27,6 +29,19 @@ const ProductDetails = () => {
     getData()
   }, [])
 
+  const addToCart = (product) => {
+    const exist = cartItems.find((x) => x.id === product.id)
+    if (exist) {
+      setCartItems(
+        cartItems.map((x) =>
+          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+        )
+      )
+    } else {
+      setCartItems([...cartItems, { ...product, qty: 1 }])
+    }
+  }
+
   return (
     <>
       <Container>
@@ -37,12 +52,14 @@ const ProductDetails = () => {
           product.length > 0 &&
           product.map((item) => (
             <Product
+              className='productView'
               key={item.title}
               title={item.title}
               img={item.img}
               category={item.category}
               price={item.price}
               description={item.description}
+              addToCart={() => addToCart(item.title)}
             />
           ))}
       </Container>

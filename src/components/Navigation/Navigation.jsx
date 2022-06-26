@@ -1,10 +1,14 @@
 import React, { useState } from "react"
 import * as S from "./Navigation.styles"
 import logo from "../../assets/logo.png"
-import { faBars, faX } from "@fortawesome/free-solid-svg-icons"
+import {
+  faUser,
+  faBars,
+  faX,
+  faBasketShopping,
+} from "@fortawesome/free-solid-svg-icons"
 import Container from "../Container/Container"
 import Button from "../Button/Button"
-import { faUser, faBasketShopping } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
 
 const authLinks = [{ url: "/dashboard", title: "Dashboard" }]
@@ -27,12 +31,14 @@ const Navigation = () => {
               </Link>
               <h4>COMFORT</h4>
             </S.LogoDiv>
+
             {/* DESKTOP MENU */}
             <S.DesktopMenu>
               <S.StyledLink to='/'>Home</S.StyledLink>
               <S.StyledLink to='/shop'>Shop</S.StyledLink>
               <S.StyledLink to='/contacts'>Contacts</S.StyledLink>
             </S.DesktopMenu>
+
             {/* USER MENU */}
             <S.UserMenu>
               <Link to='/cart'>
@@ -45,6 +51,7 @@ const Navigation = () => {
                   </Link>
                 ))}
             </S.UserMenu>
+
             {/* MOBILE MENU HAMBURGER */}
             <S.MobileMenuIcon
               onClick={() => {
@@ -53,6 +60,7 @@ const Navigation = () => {
               icon={hiddenMenu ? faX : faBars}
             ></S.MobileMenuIcon>
           </S.Navigation>
+
           {/* MOBILE MENU */}
           {hiddenMenu && (
             <S.Menu>
@@ -64,7 +72,11 @@ const Navigation = () => {
               {token && (
                 <S.StyledLink
                   to='/'
-                  onClick={() => localStorage.removeItem("token")}
+                  onClick={() => {
+                    localStorage.removeItem("token")
+                    localStorage.removeItem("roles")
+                    localStorage.removeItem("userId")
+                  }}
                 >
                   Log out
                 </S.StyledLink>

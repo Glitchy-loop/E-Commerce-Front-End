@@ -1,9 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Button from "../Button/Button"
 import * as S from "./OrderList.styles"
 
-const OrderList = ({ orders, button }) => {
+const OrderList = ({ orders }) => {
   return (
     <S.Table>
       <thead>
@@ -23,12 +22,12 @@ const OrderList = ({ orders, button }) => {
               <S.Td>{order.email}</S.Td>
               <S.Td>{order.title}</S.Td>
               <S.Td>€{order.price}</S.Td>
-              <S.Td>{order.timestamp}</S.Td>
-              {button && (
-                <S.Td>
-                  <Button>Delete</Button>
-                </S.Td>
-              )}
+              <S.Td>
+                {order.timestamp
+                  .replace("Z", "")
+                  .replace("T", " ")
+                  .slice(0, -4)}
+              </S.Td>
             </tr>
           ))}
       </tbody>

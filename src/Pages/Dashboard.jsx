@@ -6,6 +6,7 @@ import Title from "../components/Title/Title"
 
 const adminLinks = [
   { url: "/dashboard", title: "Dashboard" },
+  { url: "/dashboard/view-products", title: "View products" },
   { url: "/dashboard/add", title: "Add product" },
   { url: "/dashboard/orders", title: "Orders" },
 ]
@@ -26,6 +27,7 @@ const Dashboard = () => {
 
         <p style={{ textAlign: "center" }}>
           Welcome to your dashboard. From here you can manager your orders.
+          {roles === "1" && <span>And add, view, remove products.</span>}
         </p>
       </Container>
       <Footer />

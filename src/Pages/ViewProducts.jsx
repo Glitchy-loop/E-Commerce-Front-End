@@ -1,11 +1,11 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Container from "../components/Container/Container"
 import Title from "../components/Title/Title"
-import AddProductForm from "../components/AddProduct/AddProductForm"
 import Notification from "../components/Notification/Notification"
 import { useNavigate } from "react-router-dom"
 import Footer from "../components/Footer/Footer"
 import DashboardNav from "../components/DashboardNav/DashboardNav"
+import ViewProductsList from "../components/ViewProductsList/ViewProductsList"
 
 const token = localStorage.getItem("token")
 
@@ -22,60 +22,66 @@ const clientLinks = [
 const roles = localStorage.getItem("roles")
 const links = localStorage.getItem("roles") === "1" ? adminLinks : clientLinks
 
-const AddProduct = () => {
+const ViewProducts = () => {
   const [error, setError] = useState()
-
+  const [products, setProducts] = useState()
   const navigate = useNavigate()
 
-  const addNewProduct = async (inputs) => {
-    const fd = new FormData()
-
-    fd.append("img", inputs.img)
-    fd.append("title", inputs.title)
-    fd.append("category", inputs.category)
-    fd.append("price", Number(inputs.price))
-    fd.append("description", inputs.description)
-
+  // Delete buttons
+  const deleteFunc = async (e) => {
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/v1/products/add`,
+        `${process.env.REACT_APP_BACKEND_URL}/v1/products/delete/${e}`,
         {
-          method: "POST",
+          method: "DELETE",
           headers: {
             authorization: `Bearer ${token}`,
           },
-          body: fd,
         }
       )
       const data = await res.json()
 
-      if (data.err) {
-        return setError(data.err)
+      if (data.msg === `Product with ID ${e} was sucessfully DELETED.`) {
+        getProducts()
       }
-
-      if (data.msg) {
-        setError(data.msg)
-        navigate("/dashboard/view-products")
-      }
+      console.log(data)
     } catch (err) {
-      return setError(err.message)
+      return setError(err.msg)
     }
   }
+
+  const getProducts = async () => {
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/v1/products`
+      )
+      const data = await res.json()
+
+      console.log(data)
+      setProducts(data)
+    } catch (err) {
+      return setError(err.msg)
+    }
+  }
+
+  useEffect(() => {
+    getProducts()
+  }, [])
 
   return (
     <>
       <Container>
-        <Title title='Add a new product' />
-
+        <Title title='All products list' />
         {roles === "1" && <DashboardNav links={links}></DashboardNav>}
         {roles === "0" && <DashboardNav links={links}></DashboardNav>}
-
         {error && <Notification>{error}</Notification>}
-        <AddProductForm handleSubmit={addNewProduct} />
+        {products && (
+          <ViewProductsList products={products} handleDelete={deleteFunc} />
+        )}
       </Container>
       <Footer />
     </>
   )
 }
 
-export default AddProduct
+export default ViewProducts

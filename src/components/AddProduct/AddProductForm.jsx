@@ -11,7 +11,6 @@ const AddProductForm = ({ handleSubmit }) => {
 
   return (
     <Section>
-      <Title title='Please fill in details.' />
       <S.Form
         onSubmit={(e) => {
           e.preventDefault()

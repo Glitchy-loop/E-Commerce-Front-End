@@ -45,7 +45,7 @@ const RegistrationForm = ({ handleSubmit }) => {
             })
           }
         />
-        <p>What role you wish to register with?</p>
+        <p>What role you wish to register your account with?</p>
         <Radio
           label='Customer'
           name='roles'
