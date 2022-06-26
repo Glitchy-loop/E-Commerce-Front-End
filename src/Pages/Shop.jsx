@@ -72,11 +72,11 @@ const Shop = () => {
       <Container>
         <Section>
           <Title title='Shop' />
-          {error && <Notification>{error}</Notification>}
           <SearchInput
             placeholder='Product title or category...'
             handleSearch={(e) => searchProducts(e)}
           />
+          {error && <Notification>{error}</Notification>}
           {!products && <Loader />}
           {products && products.length === 0 && (
             <Notification>No products found.</Notification>

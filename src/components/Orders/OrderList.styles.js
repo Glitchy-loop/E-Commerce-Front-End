@@ -6,11 +6,11 @@ export const Table = styled.table`
   table-layout: fixed;
 
   & tr:nth-child(even) {
-    background-color: #dadada;
+    background-color: #f1f1f1;
   }
 
   th {
-    background-color: #dadada;
+    background-color: #f1f1f1;
     padding: 1rem;
     text-align: center;
   }

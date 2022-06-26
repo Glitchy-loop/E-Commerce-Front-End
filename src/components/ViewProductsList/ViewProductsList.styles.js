@@ -6,11 +6,11 @@ export const Table = styled.table`
   table-layout: fixed;
 
   & tr:nth-child(even) {
-    background-color: #dadada;
+    background-color: #f1f1f1;
   }
 
   th {
-    background-color: #dadada;
+    background-color: #f1f1f1;
     padding: 1rem;
     text-align: center;
   }
@@ -33,4 +33,9 @@ export const Td = styled.td`
 export const Img = styled.img`
   width: 100%;
   height: auto;
+`
+
+export const Content = styled.div`
+  max-height: 50rem;
+  overflow-y: auto;
 `

@@ -75,7 +75,9 @@ const ViewProducts = () => {
         {roles === "0" && <DashboardNav links={links}></DashboardNav>}
         {error && <Notification>{error}</Notification>}
         {!products && <Loader />}
-        {!products && <Notification>No products found</Notification>}
+        {!products && products.length === 0 && (
+          <Notification>No products found</Notification>
+        )}
         {products && (
           <ViewProductsList products={products} handleDelete={deleteFunc} />
         )}
