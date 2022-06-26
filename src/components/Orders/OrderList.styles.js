@@ -9,6 +9,12 @@ export const Table = styled.table`
     background-color: #dadada;
   }
 
+  th {
+    background-color: #dadada;
+    padding: 1rem;
+    text-align: center;
+  }
+
   button {
     margin: 0 auto;
   }
@@ -19,7 +25,6 @@ export const Table = styled.table`
 `
 
 export const Td = styled.td`
-  border: 1px solid grey;
   padding: 1rem;
   text-align: center;
 `
