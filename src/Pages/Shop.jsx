@@ -74,7 +74,7 @@ const Shop = () => {
           <Title title='Shop' />
           {error && <Notification>{error}</Notification>}
           <SearchInput
-            title='Search for product'
+            placeholder='Product title or category...'
             handleSearch={(e) => searchProducts(e)}
           />
           {!products && <Loader />}

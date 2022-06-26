@@ -2,19 +2,23 @@ import React from "react"
 import PropTypes from "prop-types"
 import * as S from "./SearchInput.styles"
 
-const SearchInput = ({ title, handleSearch }) => {
+const SearchInput = ({ title, placeholder, handleSearch }) => {
   return (
     <S.Search>
-      <S.Title>{title}</S.Title>
+      {title && <S.Title>{title}</S.Title>}
       <S.Input
         type='search'
-        placeholder='Search...'
+        placeholder={placeholder}
         onChange={(e) => handleSearch(e.target.value)}
       />
     </S.Search>
   )
 }
 
-SearchInput.propTypes = {}
+SearchInput.propTypes = {
+  title: PropTypes.string,
+  placeholder: PropTypes.string.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+}
 
 export default SearchInput
