@@ -6,8 +6,7 @@ import Footer from "../components/Footer/Footer"
 import DashboardNav from "../components/DashboardNav/DashboardNav"
 import ViewProductsList from "../components/ViewProductsList/ViewProductsList"
 import Loader from "../components/Loader/Loader"
-
-const token = localStorage.getItem("token")
+import { useNavigate } from "react-router-dom"
 
 const adminLinks = [
   { url: "/dashboard", title: "Dashboard" },
@@ -19,12 +18,21 @@ const clientLinks = [
   { url: "/dashboard", title: "Dashboard" },
   { url: "/dashboard/orders", title: "Orders" },
 ]
-const roles = localStorage.getItem("roles")
-const links = localStorage.getItem("roles") === "1" ? adminLinks : clientLinks
 
 const ViewProducts = () => {
   const [error, setError] = useState()
   const [products, setProducts] = useState()
+  const [token, setToken] = useState(localStorage.getItem("token"))
+  const [roles, setRoles] = useState(localStorage.getItem("roles"))
+
+  const links = roles === "1" ? adminLinks : clientLinks
+
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!token || roles !== "1") {
+      navigate("/dashboard")
+    }
+  }, [])
 
   // Delete buttons
   const deleteFunc = async (e) => {

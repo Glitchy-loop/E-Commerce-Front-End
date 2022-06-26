@@ -8,9 +8,6 @@ import Loader from "../components/Loader/Loader"
 import DashboardNav from "../components/DashboardNav/DashboardNav"
 import Footer from "../components/Footer/Footer"
 
-const admin = localStorage.getItem("roles") === "1"
-const customer = localStorage.getItem("roles") === "0"
-
 const adminLinks = [
   { url: "/dashboard", title: "Dashboard" },
   { url: "/dashboard/view-products", title: "View products" },
@@ -22,14 +19,18 @@ const clientLinks = [
   { url: "/dashboard/orders", title: "Orders" },
 ]
 
-const roles = localStorage.getItem("roles")
-const links = localStorage.getItem("roles") === "1" ? adminLinks : clientLinks
-
-// Get all orders
 const Orders = () => {
   const [orders, setOrders] = useState()
   const [error, setError] = useState()
+  const [token, setToken] = useState(localStorage.getItem("token"))
+  const [roles, setRoles] = useState(localStorage.getItem("roles"))
+  const [userId, setUserId] = useState(localStorage.getItem("userId"))
 
+  const admin = roles === "1"
+  const customer = roles === "0"
+  const links = roles === "1" ? adminLinks : clientLinks
+
+  // Get all orders
   const getAllOrders = async () => {
     try {
       const res = await fetch(
@@ -52,9 +53,7 @@ const Orders = () => {
   const getCustomerOrders = async () => {
     try {
       const res = await fetch(
-        `${
-          process.env.REACT_APP_BACKEND_URL
-        }/v1/orders/customer/${localStorage.getItem("userId")}`,
+        `${process.env.REACT_APP_BACKEND_URL}/v1/orders/customer/${userId}`,
         {
           headers: {
             authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -62,6 +61,10 @@ const Orders = () => {
         }
       )
       const data = await res.json()
+
+      if (data.err) {
+        return <Notification>{data.err}</Notification>
+      }
 
       setOrders(data)
     } catch (err) {
@@ -85,7 +88,7 @@ const Orders = () => {
 
         {error && <Notification>{error}</Notification>}
 
-        {!orders && <Loader />}
+        {!orders && <Loader /> && <Notification>No orders found.</Notification>}
         {admin && orders && <OrderList orders={orders} />}
 
         {customer && orders && <OrderList orders={orders} />}

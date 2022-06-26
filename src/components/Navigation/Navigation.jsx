@@ -13,10 +13,10 @@ import { Link } from "react-router-dom"
 
 const authLinks = [{ url: "/dashboard", title: "Dashboard" }]
 const publicLinks = [{ url: "/login", title: "Login" }]
-const token = localStorage.getItem("token")
 
 const Navigation = () => {
   const [hiddenMenu, setHiddenMenu] = useState(false)
+  const [token, setToken] = useState(localStorage.getItem("token"))
 
   const links = localStorage.getItem("token") ? authLinks : publicLinks
 

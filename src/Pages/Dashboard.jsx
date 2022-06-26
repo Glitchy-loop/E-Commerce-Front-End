@@ -15,19 +15,21 @@ const clientLinks = [
   { url: "/dashboard", title: "Dashboard" },
   { url: "/dashboard/orders", title: "Orders" },
 ]
-const roles = localStorage.getItem("roles")
-const links = localStorage.getItem("roles") === "1" ? adminLinks : clientLinks
 
 const Dashboard = () => {
   const navigate = useNavigate()
 
   const [token, setToken] = useState(localStorage.getItem("token"))
+  const [roles, setRoles] = useState(localStorage.getItem("roles"))
+
+  const links = roles === "1" ? adminLinks : clientLinks
 
   useEffect(() => {
     if (!token) {
       navigate("/login")
     }
   }, [])
+
   return (
     <>
       <Container>

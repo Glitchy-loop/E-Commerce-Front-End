@@ -16,8 +16,8 @@ const OrderList = ({ orders }) => {
       </thead>
       <tbody>
         {orders &&
-          orders.map((order) => (
-            <tr>
+          orders.map((order, index) => (
+            <tr key={index}>
               <S.Td>{order.orderId}</S.Td>
               <S.Td>{order.email}</S.Td>
               <S.Td>{order.title}</S.Td>

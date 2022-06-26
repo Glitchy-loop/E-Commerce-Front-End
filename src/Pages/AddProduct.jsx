@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Container from "../components/Container/Container"
 import Title from "../components/Title/Title"
 import AddProductForm from "../components/AddProduct/AddProductForm"
@@ -6,8 +6,6 @@ import Notification from "../components/Notification/Notification"
 import { useNavigate } from "react-router-dom"
 import Footer from "../components/Footer/Footer"
 import DashboardNav from "../components/DashboardNav/DashboardNav"
-
-const token = localStorage.getItem("token")
 
 const adminLinks = [
   { url: "/dashboard", title: "Dashboard" },
@@ -19,13 +17,19 @@ const clientLinks = [
   { url: "/dashboard", title: "Dashboard" },
   { url: "/dashboard/orders", title: "Orders" },
 ]
-const roles = localStorage.getItem("roles")
-const links = localStorage.getItem("roles") === "1" ? adminLinks : clientLinks
-
 const AddProduct = () => {
   const [error, setError] = useState()
+  const [token, setToken] = useState(localStorage.getItem("token"))
+  const [roles, setRoles] = useState(localStorage.getItem("roles"))
+
+  const links = roles === "1" ? adminLinks : clientLinks
 
   const navigate = useNavigate()
+  useEffect(() => {
+    if (!token || roles !== "1") {
+      navigate("/dashboard")
+    }
+  }, [])
 
   const addNewProduct = async (inputs) => {
     const fd = new FormData()
