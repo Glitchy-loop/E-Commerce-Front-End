@@ -1,10 +1,15 @@
 import React from "react"
+import Container from "../components/Container/Container"
 import Footer from "../components/Footer/Footer"
+import Title from "../components/Title/Title"
 
 const Cart = () => {
   return (
     <>
-      <div>Cart</div> <Footer />
+      <Container>
+        <Title title='Cart' />
+      </Container>
+      <Footer />
     </>
   )
 }
