@@ -6,7 +6,6 @@ import Title from "../components/Title/Title"
 import OrderList from "../components/Orders/OrderList"
 import Loader from "../components/Loader/Loader"
 import DashboardNav from "../components/DashboardNav/DashboardNav"
-import Footer from "../components/Footer/Footer"
 
 const adminLinks = [
   { url: "/dashboard", title: "Dashboard" },
@@ -93,7 +92,6 @@ const Orders = () => {
 
         {customer && orders && <OrderList orders={orders} />}
       </Container>
-      <Footer />
     </>
   )
 }

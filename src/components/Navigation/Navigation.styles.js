@@ -1,6 +1,24 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
+
+const fadeIn = keyframes`
+  from {
+    opacity:0;
+  }
+  to {
+    opacity: 1;
+  }
+`
+
+const slideDown = keyframes`
+  from {
+    transform:translateY(-4rem)
+  }
+  to {
+    transform:translateY(0)
+  }
+`
 
 export const Header = styled.header`
   font-family: 'Roboto';
@@ -8,6 +26,7 @@ export const Header = styled.header`
   margin: 0 auto;
   box-sizing: border-box;
   padding: 2rem;
+  animation: ${slideDown} 1s forwards;
 `
 
 export const Navigation = styled.nav`

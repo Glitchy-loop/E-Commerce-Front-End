@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import Container from "../components/Container/Container"
 import DashboardNav from "../components/DashboardNav/DashboardNav"
-import Footer from "../components/Footer/Footer"
 import Title from "../components/Title/Title"
 
 const adminLinks = [
@@ -42,7 +41,6 @@ const Dashboard = () => {
           {roles === "1" && <span>And add, view, remove products.</span>}
         </p>
       </Container>
-      <Footer />
     </>
   )
 }

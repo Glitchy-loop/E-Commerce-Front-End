@@ -17,8 +17,6 @@ const publicLinks = [{ url: "/login", title: "Login" }]
 const Navigation = () => {
   const [hiddenMenu, setHiddenMenu] = useState(false)
   const [token, setToken] = useState(localStorage.getItem("token"))
-  const [roles, setRoles] = useState(localStorage.getItem("roles"))
-  const [userId, setUserId] = useState(localStorage.getItem("userId"))
 
   const links = token ? authLinks : publicLinks
 
@@ -57,7 +55,7 @@ const Navigation = () => {
             {/* MOBILE MENU HAMBURGER */}
             <S.MobileMenuIcon
               onClick={() => {
-                setHiddenMenu((curr) => !curr)
+                setHiddenMenu((x) => !x)
               }}
               icon={hiddenMenu ? faX : faBars}
             ></S.MobileMenuIcon>

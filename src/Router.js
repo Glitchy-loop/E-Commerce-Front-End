@@ -12,6 +12,7 @@ import AddProduct from './Pages/AddProduct'
 import Orders from './Pages/Orders'
 import ViewProducts from './Pages/ViewProducts'
 import Contacts from './Pages/Contacts'
+import Footer from './components/Footer/Footer'
 
 const Router = () => {
   return (
@@ -34,6 +35,7 @@ const Router = () => {
           element={<ViewProducts />}
         />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }

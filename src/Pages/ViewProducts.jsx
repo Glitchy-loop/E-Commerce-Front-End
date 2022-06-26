@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import Container from "../components/Container/Container"
 import Title from "../components/Title/Title"
 import Notification from "../components/Notification/Notification"
-import Footer from "../components/Footer/Footer"
 import DashboardNav from "../components/DashboardNav/DashboardNav"
 import ViewProductsList from "../components/ViewProductsList/ViewProductsList"
 import Loader from "../components/Loader/Loader"
@@ -88,7 +87,6 @@ const ViewProducts = () => {
           <ViewProductsList products={products} handleDelete={deleteFunc} />
         )}
       </Container>
-      <Footer />
     </>
   )
 }

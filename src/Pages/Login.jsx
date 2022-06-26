@@ -3,7 +3,6 @@ import Container from "../components/Container/Container"
 import Notification from "../components/Notification/Notification"
 import LoginForm from "../components/LoginForm/LoginForm"
 import { useNavigate } from "react-router-dom"
-import Footer from "../components/Footer/Footer"
 
 const Login = () => {
   const [error, setError] = useState()
@@ -53,7 +52,6 @@ const Login = () => {
         {error && <Notification>{error}</Notification>}
         <LoginForm handleSubmit={loginUser} />
       </Container>
-      <Footer />
     </>
   )
 }

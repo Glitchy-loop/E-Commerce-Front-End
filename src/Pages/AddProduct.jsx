@@ -4,7 +4,6 @@ import Title from "../components/Title/Title"
 import AddProductForm from "../components/AddProduct/AddProductForm"
 import Notification from "../components/Notification/Notification"
 import { useNavigate } from "react-router-dom"
-import Footer from "../components/Footer/Footer"
 import DashboardNav from "../components/DashboardNav/DashboardNav"
 
 const adminLinks = [
@@ -77,7 +76,6 @@ const AddProduct = () => {
         {error && <Notification>{error}</Notification>}
         <AddProductForm handleSubmit={addNewProduct} />
       </Container>
-      <Footer />
     </>
   )
 }

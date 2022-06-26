@@ -5,7 +5,6 @@ import Section from "../components/Section/Section"
 import Loader from "../components/Loader/Loader"
 import Notification from "../components/Notification/Notification"
 import Slider from "../components/Slider/Slider"
-import Footer from "../components/Footer/Footer"
 
 const Home = () => {
   const [products, setProducts] = useState()
@@ -38,7 +37,6 @@ const Home = () => {
           {products && products.length > 0 && <Slider items={products} />}
         </Section>
       </Container>
-      <Footer />
     </>
   )
 }

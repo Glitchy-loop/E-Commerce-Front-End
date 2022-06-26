@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import Container from "../components/Container/Container"
-import Footer from "../components/Footer/Footer"
 import Loader from "../components/Loader/Loader"
 import Notification from "../components/Notification/Notification"
 import ProductList from "../components/ProductList/ProductList"
@@ -86,7 +85,6 @@ const Shop = () => {
           )}
         </Section>
       </Container>
-      <Footer />
     </>
   )
 }
