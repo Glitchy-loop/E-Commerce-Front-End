@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './Pages/Home'
 import Navigation from './components/Navigation/Navigation'
 import Register from './Pages/Register'
@@ -14,8 +14,6 @@ import ViewProducts from './Pages/ViewProducts'
 import Contacts from './Pages/Contacts'
 
 const Router = () => {
-  // const [token, setToken] = useState(localStorage.getItem('token'))
-
   return (
     <BrowserRouter>
       <Navigation />
@@ -35,9 +33,6 @@ const Router = () => {
           path='/dashboard/view-products'
           element={<ViewProducts />}
         />
-        {/* <Route exact path='/'>
-          {token ? <Redirect to='/dashboard' /> : <Login />}
-        </Route> */}
       </Routes>
     </BrowserRouter>
   )
