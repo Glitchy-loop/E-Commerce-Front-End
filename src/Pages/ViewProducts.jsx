@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react"
 import Container from "../components/Container/Container"
 import Title from "../components/Title/Title"
 import Notification from "../components/Notification/Notification"
-import { useNavigate } from "react-router-dom"
 import Footer from "../components/Footer/Footer"
 import DashboardNav from "../components/DashboardNav/DashboardNav"
 import ViewProductsList from "../components/ViewProductsList/ViewProductsList"
+import Loader from "../components/Loader/Loader"
 
 const token = localStorage.getItem("token")
 
@@ -25,7 +25,6 @@ const links = localStorage.getItem("roles") === "1" ? adminLinks : clientLinks
 const ViewProducts = () => {
   const [error, setError] = useState()
   const [products, setProducts] = useState()
-  const navigate = useNavigate()
 
   // Delete buttons
   const deleteFunc = async (e) => {
@@ -57,7 +56,7 @@ const ViewProducts = () => {
       )
       const data = await res.json()
 
-      console.log(data)
+      // console.log(data)
       setProducts(data)
     } catch (err) {
       return setError(err.msg)
@@ -75,6 +74,8 @@ const ViewProducts = () => {
         {roles === "1" && <DashboardNav links={links}></DashboardNav>}
         {roles === "0" && <DashboardNav links={links}></DashboardNav>}
         {error && <Notification>{error}</Notification>}
+        {!products && <Loader />}
+        {!products && <Notification>No products found</Notification>}
         {products && (
           <ViewProductsList products={products} handleDelete={deleteFunc} />
         )}

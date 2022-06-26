@@ -88,7 +88,7 @@ const Orders = () => {
         {!orders && <Loader />}
         {admin && orders && <OrderList orders={orders} />}
 
-        {customer && orders && <OrderList orders={orders} button={"aaa"} />}
+        {customer && orders && <OrderList orders={orders} />}
       </Container>
       <Footer />
     </>

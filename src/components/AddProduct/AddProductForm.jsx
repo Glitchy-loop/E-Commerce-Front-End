@@ -3,7 +3,6 @@ import Button from "../Button/Button"
 import ImgUploader from "../ImgUploader/ImgUploader"
 import Section from "../Section/Section"
 import TextInput from "../TextInput/TextInput"
-import Title from "../Title/Title"
 import * as S from "./AddProductForm.styles"
 
 const AddProductForm = ({ handleSubmit }) => {

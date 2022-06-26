@@ -24,3 +24,8 @@ export const Td = styled.td`
   text-align: center;
   overflow-y: auto;
 `
+
+export const Img = styled.img`
+  width: 100%;
+  height: auto;
+`
