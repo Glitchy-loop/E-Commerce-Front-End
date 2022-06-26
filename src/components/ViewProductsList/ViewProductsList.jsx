@@ -49,6 +49,16 @@ const ViewProductsList = ({ products, handleDelete }) => {
   )
 }
 
-ViewProductsList.propTypes = {}
+ViewProductsList.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      img: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      description: PropTypes.string.isRequired,
+    }).isRequired
+  ),
+}
 
 export default ViewProductsList

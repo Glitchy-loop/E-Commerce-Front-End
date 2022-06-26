@@ -15,5 +15,4 @@ export const Section = styled.section`
   display: flex;
   flex-direction: column;
   animation: ${fadeIn} 750ms forwards ease;
-  padding: 3rem;
 `
