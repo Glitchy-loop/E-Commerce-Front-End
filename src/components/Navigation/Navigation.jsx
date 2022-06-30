@@ -10,11 +10,12 @@ import {
 import Container from "../Container/Container"
 import Button from "../Button/Button"
 import { Link } from "react-router-dom"
+import Basket from "../Basket/Basket"
 
 const authLinks = [{ url: "/dashboard", title: "Dashboard" }]
 const publicLinks = [{ url: "/login", title: "Login" }]
 
-const Navigation = () => {
+const Navigation = ({ cartItems }) => {
   const [hiddenMenu, setHiddenMenu] = useState(false)
   const [token, setToken] = useState(localStorage.getItem("token"))
 
@@ -31,27 +32,25 @@ const Navigation = () => {
               </Link>
               <h4>COMFORT</h4>
             </S.LogoDiv>
-
             {/* DESKTOP MENU */}
             <S.DesktopMenu>
               <S.StyledLink to='/'>Home</S.StyledLink>
               <S.StyledLink to='/shop'>Shop</S.StyledLink>
               <S.StyledLink to='/contacts'>Contacts</S.StyledLink>
             </S.DesktopMenu>
-
             {/* USER MENU */}
             <S.UserMenu>
-              <Link to='/cart'>
+              {/* <Link to='/cart'>
                 <Button icon={faBasketShopping}></Button>
-              </Link>
+              </Link> */}
               {links &&
                 links.map((link) => (
                   <Link key={link} to={link.url}>
                     <Button icon={faUser}></Button>
                   </Link>
                 ))}
+              <Basket cartItems={cartItems} />
             </S.UserMenu>
-
             {/* MOBILE MENU HAMBURGER */}
             <S.MobileMenuIcon
               onClick={() => {

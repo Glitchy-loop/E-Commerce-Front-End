@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import * as S from "./Button.styles"
-import { Link } from "react-router-dom"
 
 const Button = ({ outline, icon, type, children, handleClick }) => {
   return (
@@ -14,7 +13,7 @@ const Button = ({ outline, icon, type, children, handleClick }) => {
 
 Button.propTypes = {
   type: PropTypes.oneOf(["submit", "reset", "button"]),
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   handleClick: PropTypes.func,
   icon: PropTypes.object,
 }

@@ -11,6 +11,8 @@ const ProductDetails = () => {
   const [product, setProduct] = useState()
   const [cartItems, setCartItems] = useState([])
 
+  //
+
   // Get product data
   const getData = async () => {
     try {
@@ -28,17 +30,11 @@ const ProductDetails = () => {
     getData()
   }, [])
 
-  const addToCart = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id)
-    if (exist) {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
-        )
-      )
-    } else {
-      setCartItems([...cartItems, { ...product, qty: 1 }])
-    }
+  const addToCart = (item) => {
+    cartItems.push(item)
+    setCartItems(cartItems)
+    localStorage.setItem("cart", cartItems)
+    console.log(cartItems)
   }
 
   return (
@@ -58,7 +54,7 @@ const ProductDetails = () => {
               category={item.category}
               price={item.price}
               description={item.description}
-              addToCart={() => addToCart(item.title)}
+              addToCart={() => addToCart(item.id)}
             />
           ))}
       </Container>

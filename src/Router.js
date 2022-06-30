@@ -34,6 +34,7 @@ const Router = () => {
           path='/dashboard/view-products'
           element={<ViewProducts />}
         />
+        <Route exact path='*' element={<Home />} />
       </Routes>
       <Footer />
     </BrowserRouter>
