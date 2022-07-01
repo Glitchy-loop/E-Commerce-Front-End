@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Container from "../components/Container/Container"
 import Product from "../components/Product/Product"
 import PropTypes from "prop-types"
 import Title from "../components/Title/Title"
 import Loader from "../components/Loader/Loader"
+import Notification from "../components/Notification/Notification"
 
 const ProductDetails = () => {
   const { id } = useParams()
   const [product, setProduct] = useState()
-  const [cartItems, setCartItems] = useState([])
-
-  //
+  const [error, setError] = useState()
+  const navigate = useNavigate()
 
   // Get product data
   const getData = async () => {
@@ -26,15 +26,44 @@ const ProductDetails = () => {
       console.log(err)
     }
   }
+
   useEffect(() => {
     getData()
   }, [])
 
   const addToCart = (item) => {
-    cartItems.push(item)
-    setCartItems(cartItems)
-    localStorage.setItem("cart", cartItems)
-    console.log(cartItems)
+    buyProduct(item)
+  }
+
+  // Create order
+  const buyProduct = async (item) => {
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/v1/orders/add`,
+        {
+          method: "POST",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: Number(localStorage.getItem("userId")),
+            productId: item.id,
+          }),
+        }
+      )
+      const data = await res.json()
+
+      if (data.msg === "Successfully added an order.") {
+        navigate("/dashboard/orders")
+      }
+      // console.log(data)
+      if (data.err) {
+        return setError(data.err)
+      }
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -42,6 +71,7 @@ const ProductDetails = () => {
       <Container>
         <Title title={`Product details`} />
         {!product && <Loader />}
+        {error && <Notification>{error}</Notification>}
         {product && product.length === 0 && <div>No product found.</div>}
         {product &&
           product.length > 0 &&
@@ -54,7 +84,7 @@ const ProductDetails = () => {
               category={item.category}
               price={item.price}
               description={item.description}
-              addToCart={() => addToCart(item.id)}
+              addToCart={() => addToCart(item)}
             />
           ))}
       </Container>

@@ -14,7 +14,7 @@ const Product = ({ img, category, title, price, description, addToCart }) => {
       <S.Category>{category}</S.Category>
       <S.Price>{price}</S.Price>
       {description && <S.Description>{description}</S.Description>}
-      {addToCart && <Button handleClick={addToCart}>Add to cart</Button>}
+      {addToCart && <Button handleClick={addToCart}>Buy now</Button>}
     </S.Product>
   )
 }

@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import * as S from "./ProductList.styles"
 import Product from "../Product/Product"
+import Button from "../Button/Button"
 
 const ProductList = ({ products }) => {
   return (
