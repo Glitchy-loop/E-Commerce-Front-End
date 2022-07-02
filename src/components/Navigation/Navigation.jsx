@@ -49,7 +49,7 @@ const Navigation = ({ cartItems }) => {
                     <Button icon={faUser}></Button>
                   </Link>
                 ))}
-              <Basket cartItems={cartItems} />
+              <Basket />
             </S.UserMenu>
             {/* MOBILE MENU HAMBURGER */}
             <S.MobileMenuIcon

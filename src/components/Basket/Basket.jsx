@@ -8,9 +8,7 @@ import { Link } from "react-router-dom"
 const Basket = ({ cartItems }) => {
   return (
     <Link to='/cart'>
-      <Button icon={faBasketShopping}>
-        <S.Span>3</S.Span>
-      </Button>
+      <Button icon={faBasketShopping}>{/* <S.Span>3</S.Span> */}</Button>
     </Link>
   )
 }

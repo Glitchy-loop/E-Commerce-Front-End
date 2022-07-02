@@ -22,8 +22,14 @@ export const Right = styled.div`
 export const ProductTitle = styled.div`
   font-size: 1.5rem;
   padding: 1rem;
+  max-width: 60%;
+
+  @media (max-width: 600px) {
+    font-size: 1.2rem;
+  }
 `
 
 export const ProductDescription = styled.div`
-  font-size: 1rem;
+  font-size: 0.9rem;
+  max-width: 60%;
 `

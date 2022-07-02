@@ -13,30 +13,34 @@ import Orders from './Pages/Orders'
 import ViewProducts from './Pages/ViewProducts'
 import Contacts from './Pages/Contacts'
 import Footer from './components/Footer/Footer'
+import { Provider } from 'react-redux'
+import store from './redux/store'
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Navigation />
-      <Routes>
-        <Route exact path='/' element={<Home />} />
-        <Route exact path='/register' element={<Register />} />
-        <Route exact path='/login' element={<Login />} />
-        <Route exact path='/shop' element={<Shop />} />
-        <Route exact path='/cart' element={<Cart />} />
-        <Route exact path='/contacts' element={<Contacts />} />
-        <Route exact path='/dashboard' element={<Dashboard />} />
-        <Route exact path='/product/:id' element={<ProductDetails />} />
-        <Route exact path='/dashboard/add' element={<AddProduct />} />
-        <Route exact path='/dashboard/orders' element={<Orders />} />
-        <Route
-          exact
-          path='/dashboard/view-products'
-          element={<ViewProducts />}
-        />
-        <Route exact path='*' element={<Home />} />
-      </Routes>
-      <Footer />
+      <Provider store={store}>
+        <Navigation />
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/register' element={<Register />} />
+          <Route exact path='/login' element={<Login />} />
+          <Route exact path='/shop' element={<Shop />} />
+          <Route exact path='/cart' element={<Cart />} />
+          <Route exact path='/contacts' element={<Contacts />} />
+          <Route exact path='/dashboard' element={<Dashboard />} />
+          <Route exact path='/product/:id' element={<ProductDetails />} />
+          <Route exact path='/dashboard/add' element={<AddProduct />} />
+          <Route exact path='/dashboard/orders' element={<Orders />} />
+          <Route
+            exact
+            path='/dashboard/view-products'
+            element={<ViewProducts />}
+          />
+          <Route exact path='*' element={<Home />} />
+        </Routes>
+        <Footer />
+      </Provider>
     </BrowserRouter>
   )
 }
