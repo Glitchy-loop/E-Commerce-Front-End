@@ -4,7 +4,7 @@ import * as S from "./ProductList.styles"
 import Product from "../Product/Product"
 import Button from "../Button/Button"
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, handleAddToCart }) => {
   return (
     <S.ProductList>
       {products &&
@@ -16,6 +16,7 @@ const ProductList = ({ products }) => {
               title={product.title}
               price={product.price}
             />
+            <Button addToCart={handleAddToCart}>Add to cart</Button>
           </S.StyledLink>
         ))}
     </S.ProductList>

@@ -5,6 +5,7 @@ import store from "../redux/store"
 import ProductList from "../components/ProductList/ProductList"
 import Notification from "../components/Notification/Notification"
 import Loader from "../components/Loader/Loader"
+import CartView from "../components/CartView/CartView"
 
 const Cart = () => {
   let cartItems = store.getState().cart.value
@@ -45,7 +46,7 @@ const Cart = () => {
           <div style={{ textAlign: "center" }}>No products in a cart</div>
         )}
         {products && products.length > 0 && <Loader /> && (
-          <ProductList key={products.title} products={products} />
+          <CartView key={products.title} products={products} />
         )}
       </Container>
     </>

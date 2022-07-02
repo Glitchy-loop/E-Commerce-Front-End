@@ -12,6 +12,7 @@ import AddProduct from './Pages/AddProduct'
 import Orders from './Pages/Orders'
 import ViewProducts from './Pages/ViewProducts'
 import Contacts from './Pages/Contacts'
+import Checkout from './Pages/Checkout'
 import Footer from './components/Footer/Footer'
 import { Provider } from 'react-redux'
 import store from './redux/store'
@@ -32,6 +33,7 @@ const Router = () => {
           <Route exact path='/product/:id' element={<ProductDetails />} />
           <Route exact path='/dashboard/add' element={<AddProduct />} />
           <Route exact path='/dashboard/orders' element={<Orders />} />
+          <Route exact path='/checkout' element={<Checkout />} />
           <Route
             exact
             path='/dashboard/view-products'
