@@ -4,7 +4,6 @@ import Title from "../components/Title/Title"
 import store from "../redux/store"
 import Notification from "../components/Notification/Notification"
 import Loader from "../components/Loader/Loader"
-import CartView from "../components/CartView/CartView"
 import Button from "../components/Button/Button"
 import { useNavigate } from "react-router-dom"
 import ViewProductsList from "../components/ViewProductsList/ViewProductsList"
@@ -25,17 +24,18 @@ const Cart = (props) => {
   }
 
   const createOrder = async () => {
-    const productIds = props.products.map((product) => {
-      return product.id
+    const productsInfos = props.productsInfos.map((productInfo) => {
+      return {
+        quantity: store.getState().cart.value[productInfo.product.id].count,
+        product: productInfo.product,
+      }
     })
-
+    console.log(productsInfos)
     const finalCart = {
-      productId: productIds.toString(),
-      userId: localStorage.getItem("userId"), // TODO
+      productsInfos: productsInfos,
+      userId: Number(localStorage.getItem("userId")),
     }
-
     console.log(finalCart)
-
     try {
       const res = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/v1/orders/add`,
@@ -45,7 +45,7 @@ const Cart = (props) => {
             authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(state.cart.value),
+          body: JSON.stringify(finalCart),
         }
       )
 
@@ -69,17 +69,18 @@ const Cart = (props) => {
       <Container>
         <Title title='Cart' />
         {error && <Notification>{error}</Notification>}
-        {!props.products && (
+        {!props.productsInfos && (
           <div style={{ textAlign: "center" }}>No products in a cart</div>
         )}
 
-        {props.products && props.products.length > 0 && <Loader /> && (
-          <ViewProductsList
-            products={props.products}
-            handleDelete={(item) => removeFromCart(item)}
-            isCart={true}
-          />
-        )}
+        {props.productsInfos &&
+          props.productsInfos.length > 0 && <Loader /> && (
+            <ViewProductsList
+              products={props.productsInfos}
+              handleDelete={(item) => removeFromCart(item)}
+              isCart={true}
+            />
+          )}
 
         <Button handleClick={() => createOrder()}>Checkout</Button>
       </Container>
@@ -89,7 +90,7 @@ const Cart = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    products: Object.values(state.cart.value).map((item) => {
+    productsInfos: Object.values(state.cart.value).map((item) => {
       return item
     }),
   }
