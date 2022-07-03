@@ -10,52 +10,23 @@ import { useNavigate } from "react-router-dom"
 import ViewProductsList from "../components/ViewProductsList/ViewProductsList"
 import { useDispatch } from "react-redux"
 import { removeProductFromCart } from "../redux/Cart/cartSlice"
+import { connect } from "react-redux"
 
-const Cart = () => {
-  const cartItems = store.getState().cart.value
+const Cart = (props) => {
   const [error, setError] = useState()
-  const [products, setProducts] = useState()
   const dispatch = useDispatch()
   const [token, setToken] = useState(localStorage.getItem("token"))
   const navigate = useNavigate()
 
-  const getProducts = async () => {
-    try {
-      const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/v1/products/list/${Object.keys(
-          cartItems
-        )}`
-      )
-      const data = await res.json()
-
-      if (data.err) {
-        setError(data.err)
-      }
-
-      setProducts(data)
-      // console.log([products])
-    } catch (err) {
-      return setError(err.msg)
-    }
-  }
-
-  useEffect(() => {
-    if (Object.keys(cartItems).length > 0) {
-      getProducts()
-    }
-  }, [])
-
-  const removeFromCart = (e) => {
-    dispatch(removeProductFromCart(e))
-    setProducts(cartItems)
+  const removeFromCart = (item) => {
+    dispatch(removeProductFromCart(item))
+    console.log(item)
   }
 
   const createOrder = async () => {
-    const productIds = products.map((product) => {
+    const productIds = props.products.map((product) => {
       return product.id
     })
-
-    console.log(productIds)
 
     try {
       const res = await fetch(
@@ -82,8 +53,6 @@ const Cart = () => {
       if (data.msg === "Successfully added an order.") {
         navigate("/thankyou")
       }
-
-      console.log(data)
     } catch (err) {
       return setError(err.msg)
     }
@@ -94,22 +63,30 @@ const Cart = () => {
       <Container>
         <Title title='Cart' />
         {error && <Notification>{error}</Notification>}
-        {!products && (
+        {!props.products && (
           <div style={{ textAlign: "center" }}>No products in a cart</div>
         )}
-        {products && products.length > 0 && <Loader /> && (
+
+        {props.products && props.products.length > 0 && <Loader /> && (
           <ViewProductsList
-            key={products.title}
-            products={products}
-            handleDelete={(e) => removeFromCart(e)}
+            products={props.products}
+            handleDelete={(item) => removeFromCart(item)}
           />
         )}
-        {/* <Link to='/thankyou'> */}
+
         <Button handleClick={() => createOrder()}>Checkout</Button>
-        {/* </Link> */}
       </Container>
     </>
   )
 }
 
-export default Cart
+const mapStateToProps = (state) => {
+  console.log(Object.values(state.cart.value))
+  return {
+    products: Object.values(state.cart.value).map((item) => {
+      return item.product
+    }),
+  }
+}
+
+export default connect(mapStateToProps)(Cart)

@@ -5,24 +5,16 @@ import * as S from "./Basket.styles"
 import { faBasketShopping } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
 import store from "../../redux/store"
+import { connect } from "react-redux"
 
-const Basket = () => {
+const Basket = (props) => {
   const cartItems = store.getState().cart.value
-  let sum = 0
   const [cartItemsLength, setCartItemsLength] = useState(0)
-
-  for (const key in Object(cartItems)) {
-    sum += Object(cartItems)[key]
-  }
-  useEffect(() => {
-    console.log(cartItemsLength)
-    setCartItemsLength(sum)
-  })
 
   return (
     <Link to='/cart'>
       <Button icon={faBasketShopping}>
-        <S.Span>{cartItemsLength}</S.Span>
+        <S.Span>{props.value}</S.Span>
       </Button>
     </Link>
   )
@@ -30,4 +22,15 @@ const Basket = () => {
 
 Basket.propTypes = {}
 
-export default Basket
+const mapStateToProps = (state) => {
+  let sum = 0
+  for (const key in Object(state.cart.value)) {
+    sum += Object(state.cart.value)[key].count
+  }
+  console.log(sum)
+  return {
+    value: sum,
+  }
+}
+
+export default connect(mapStateToProps)(Basket)

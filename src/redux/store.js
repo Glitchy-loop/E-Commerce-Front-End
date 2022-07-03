@@ -1,14 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { composeWithDevTools } from 'redux-devtools-extension'
 import cartReducer from './Cart/cartSlice'
+import { combineReducers } from 'redux'
 
-const store = configureStore(
-  {
-    reducer: {
-      cart: cartReducer
-    }
-  },
-  composeWithDevTools
-)
+export const rootReducer = combineReducers({
+  cart: cartReducer
+})
 
-export default store
+export default configureStore({
+  reducer: rootReducer
+})

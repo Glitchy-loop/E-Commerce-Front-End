@@ -37,7 +37,7 @@ const ViewProducts = () => {
   const deleteFunc = async (e) => {
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/v1/products/delete/${e}`,
+        `${process.env.REACT_APP_BACKEND_URL}/v1/products/delete/${e.id}`,
         {
           method: "DELETE",
           headers: {
@@ -47,7 +47,7 @@ const ViewProducts = () => {
       )
       const data = await res.json()
 
-      if (data.msg === `Product with ID ${e} was sucessfully DELETED.`) {
+      if (data.msg === `Product with ID ${e.id} was sucessfully DELETED.`) {
         getProducts()
       }
       console.log(data)

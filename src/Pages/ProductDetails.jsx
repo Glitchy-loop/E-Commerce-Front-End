@@ -35,7 +35,8 @@ const ProductDetails = () => {
   }, [])
 
   const addToCart = (item) => {
-    dispatch(addProductToCart(item.id))
+    dispatch(addProductToCart(item))
+
     navigate("/cart")
   }
 

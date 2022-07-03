@@ -37,7 +37,7 @@ const ViewProductsList = ({ products, handleDelete }) => {
               {product.description && <S.Td>{product.description}</S.Td>}
               <S.Td>
                 <Button
-                  handleClick={() => handleDelete(product.id)}
+                  handleClick={() => handleDelete(product)}
                   icon={faX}
                 ></Button>
               </S.Td>
