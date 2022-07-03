@@ -6,7 +6,7 @@ const CartView = ({ products }) => {
   return (
     <S.CartView>
       {products.map((product) => (
-        <>
+        <div key={product.id}>
           <S.Item>
             <img
               src={
@@ -14,11 +14,15 @@ const CartView = ({ products }) => {
                 "/v1/products/img/" +
                 product.img
               }
+              alt={product.title}
             />
-            <div>{product.title}</div>
-            <div>€{product.price}</div>
+            <S.Title>{product.title}</S.Title>
+            <S.Title>
+              Quantity <input type='number' />
+            </S.Title>
+            <S.Price>€{product.price}</S.Price>
           </S.Item>
-        </>
+        </div>
       ))}
     </S.CartView>
   )

@@ -21,29 +21,27 @@ const ViewProductsList = ({ products, handleDelete }) => {
         </thead>
         <tbody>
           {products.map((product) => (
-            <>
-              <tr>
-                <S.Td>{product.id}</S.Td>
-                <S.Td>
-                  {
-                    <S.Img
-                      src={`${process.env.REACT_APP_BACKEND_URL}/v1/products/img/${product.img}`}
-                      alt={product.title}
-                    />
-                  }
-                </S.Td>
-                <S.Td>{product.title}</S.Td>
-                <S.Td>{product.category}</S.Td>
-                <S.Td>{product.price}</S.Td>
-                <S.Td>{product.description}</S.Td>
-                <S.Td>
-                  <Button
-                    handleClick={() => handleDelete(product.id)}
-                    icon={faX}
-                  ></Button>
-                </S.Td>
-              </tr>
-            </>
+            <tr key={product.id}>
+              <S.Td>{product.id}</S.Td>
+              <S.Td>
+                {
+                  <S.Img
+                    src={`${process.env.REACT_APP_BACKEND_URL}/v1/products/img/${product.img}`}
+                    alt={product.title}
+                  />
+                }
+              </S.Td>
+              <S.Td>{product.title}</S.Td>
+              <S.Td>{product.category}</S.Td>
+              <S.Td>{product.price}</S.Td>
+              {product.description && <S.Td>{product.description}</S.Td>}
+              <S.Td>
+                <Button
+                  handleClick={() => handleDelete(product.id)}
+                  icon={faX}
+                ></Button>
+              </S.Td>
+            </tr>
           ))}
         </tbody>
       </S.Table>

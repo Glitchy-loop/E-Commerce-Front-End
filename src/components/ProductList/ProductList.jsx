@@ -2,7 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import * as S from "./ProductList.styles"
 import Product from "../Product/Product"
-import Button from "../Button/Button"
 
 const ProductList = ({ products, handleAddToCart }) => {
   return (
@@ -16,7 +15,6 @@ const ProductList = ({ products, handleAddToCart }) => {
               title={product.title}
               price={product.price}
             />
-            <Button addToCart={handleAddToCart}>Add to cart</Button>
           </S.StyledLink>
         ))}
     </S.ProductList>

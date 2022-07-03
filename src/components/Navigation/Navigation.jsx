@@ -15,7 +15,7 @@ import Basket from "../Basket/Basket"
 const authLinks = [{ url: "/dashboard", title: "Dashboard" }]
 const publicLinks = [{ url: "/login", title: "Login" }]
 
-const Navigation = ({ cartItems }) => {
+const Navigation = () => {
   const [hiddenMenu, setHiddenMenu] = useState(false)
   const [token, setToken] = useState(localStorage.getItem("token"))
 
@@ -36,7 +36,7 @@ const Navigation = ({ cartItems }) => {
             <S.DesktopMenu>
               <S.StyledLink to='/'>Home</S.StyledLink>
               <S.StyledLink to='/shop'>Shop</S.StyledLink>
-              <S.StyledLink to='/contacts'>Contacts</S.StyledLink>
+              <S.StyledLink to='/about'>About</S.StyledLink>
             </S.DesktopMenu>
             {/* USER MENU */}
             <S.UserMenu>
@@ -65,7 +65,7 @@ const Navigation = ({ cartItems }) => {
             <S.Menu>
               <S.StyledLink to='/'>Home</S.StyledLink>
               <S.StyledLink to='/shop'>Shop</S.StyledLink>
-              <S.StyledLink to='/contacts'>Contacts</S.StyledLink>
+              <S.StyledLink to='/about'>About</S.StyledLink>
               <S.StyledLink to='/dashboard'>My-Account</S.StyledLink>
               <S.StyledLink to='/cart'>CART</S.StyledLink>
             </S.Menu>

@@ -8,6 +8,7 @@ const ImgUploader = ({ label, handleChange }) => {
       <S.Label>
         {label}
         <S.Input
+          required
           type='file'
           id={label}
           onChange={(e) => handleChange(e.target.files[0])}

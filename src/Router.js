@@ -11,8 +11,8 @@ import Cart from './Pages/Cart'
 import AddProduct from './Pages/AddProduct'
 import Orders from './Pages/Orders'
 import ViewProducts from './Pages/ViewProducts'
-import Contacts from './Pages/Contacts'
-import Checkout from './Pages/Checkout'
+import About from './Pages/About'
+import ThankYou from './Pages/ThankYou'
 import Footer from './components/Footer/Footer'
 import { Provider } from 'react-redux'
 import store from './redux/store'
@@ -28,12 +28,12 @@ const Router = () => {
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/shop' element={<Shop />} />
           <Route exact path='/cart' element={<Cart />} />
-          <Route exact path='/contacts' element={<Contacts />} />
+          <Route exact path='/about' element={<About />} />
           <Route exact path='/dashboard' element={<Dashboard />} />
           <Route exact path='/product/:id' element={<ProductDetails />} />
           <Route exact path='/dashboard/add' element={<AddProduct />} />
           <Route exact path='/dashboard/orders' element={<Orders />} />
-          <Route exact path='/checkout' element={<Checkout />} />
+          <Route exact path='/thankyou' element={<ThankYou />} />
           <Route
             exact
             path='/dashboard/view-products'

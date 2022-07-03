@@ -8,3 +8,12 @@ export const addToBasket = itemID => {
     }
   }
 }
+
+export const removeFromBasket = itemID => {
+  return {
+    type: actionTypes.REMOVE_FROM_CART,
+    payload: {
+      id: itemID
+    }
+  }
+}

@@ -11,6 +11,7 @@ const TextInput = ({ type, label, placeholder, value, handleChange }) => {
         type={type}
         placeholder={placeholder}
         value={value}
+        required
         onChange={(e) => handleChange(e.target.value)}
       />
     </>

@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import * as S from "./DashboardNav.styles"
 
-const token = localStorage.getItem("token")
-
 const DashboardNav = ({ links }) => {
+  const [token, setToken] = useState(localStorage.getItem("token"))
+  const [roles, setRoles] = useState(localStorage.getItem("roles"))
+
   return (
     <S.Nav>
       {links &&

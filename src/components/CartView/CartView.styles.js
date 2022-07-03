@@ -8,13 +8,20 @@ export const CartView = styled.div`
 export const Item = styled.div`
   display: flex;
   max-height: 10rem;
-  border: 1px solid #000;
+  border-top: 1px solid #000;
   box-sizing: border-box;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 
   img {
     width: 8rem;
     height: auto;
+    padding-left: 10%;
   }
+`
+
+export const Title = styled.div``
+
+export const Price = styled.div`
+  padding-right: 10%;
 `
