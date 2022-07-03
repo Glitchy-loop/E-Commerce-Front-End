@@ -3,7 +3,24 @@ import PropTypes from "prop-types"
 import * as S from "./Product.styles"
 import Button from "../Button/Button"
 
-const Product = ({ img, category, title, price, description, addToCart }) => {
+const Product = ({
+  img,
+  category,
+  title,
+  price,
+  description,
+  addToCart,
+  inStock,
+  showStock,
+}) => {
+  const handleStock = (item) => {
+    if (!item) {
+      return <span style={{ color: "red" }}>Out of stock.</span>
+    } else {
+      return <span>In stock: {item}.</span>
+    }
+  }
+
   return (
     <S.Product>
       {img && (
@@ -16,7 +33,10 @@ const Product = ({ img, category, title, price, description, addToCart }) => {
       <S.Category>{category}</S.Category>
       {price && <S.Price>{price}</S.Price>}
       {description && <S.Description>{description}</S.Description>}
-      {addToCart && <Button handleClick={addToCart}>Add to cart</Button>}
+      {showStock && <div>{handleStock(inStock)}</div>}
+      {inStock !== 0 && addToCart && (
+        <Button handleClick={addToCart}>Add to cart</Button>
+      )}
     </S.Product>
   )
 }

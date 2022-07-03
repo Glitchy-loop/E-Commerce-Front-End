@@ -8,6 +8,7 @@ import Loader from "../components/Loader/Loader"
 import Notification from "../components/Notification/Notification"
 import { addProductToCart } from "../redux/Cart/cartSlice"
 import { useDispatch } from "react-redux"
+import store from "../redux/store"
 
 const ProductDetails = () => {
   const { id } = useParams()
@@ -35,10 +36,32 @@ const ProductDetails = () => {
   }, [])
 
   const addToCart = (item) => {
+    if (
+      store.getState().cart.value[item.id] &&
+      store.getState().cart.value[item.id].count === item.inStock
+    ) {
+      alert(`You can't add more items, than available in stock.`)
+      return
+    }
     dispatch(addProductToCart(item))
-
     navigate("/cart")
   }
+
+  // const shouldShowStock = (product) => {
+  //   // store.getState().cart.value[product.id].count ===
+  //   // product.inStock
+  //   // ? false
+  //   // : true
+
+  //   if (
+  //     store.getState().cart.value[product.id] &&
+  //     store.getState().cart.value[product.id].count === product.inStock
+  //   ) {
+  //     return false
+  //   }
+
+  //   return true
+  // }
 
   return (
     <>
@@ -59,6 +82,8 @@ const ProductDetails = () => {
                   price={product.price}
                   description={product.description}
                   addToCart={() => addToCart(product)}
+                  showStock={true}
+                  inStock={product.inStock}
                 />
               </div>
             </div>

@@ -50,7 +50,6 @@ const ViewProducts = () => {
       if (data.msg === `Product with ID ${e.id} was sucessfully DELETED.`) {
         getProducts()
       }
-      console.log(data)
     } catch (err) {
       return setError(err.msg)
     }
@@ -63,7 +62,6 @@ const ViewProducts = () => {
       )
       const data = await res.json()
 
-      // console.log(data)
       setProducts(data)
     } catch (err) {
       return setError(err.msg)
@@ -83,6 +81,7 @@ const ViewProducts = () => {
         {error && <Notification>{error}</Notification>}
         {!products && <Loader />}
         {!products && <Notification>No products found</Notification>}
+
         {products && (
           <ViewProductsList products={products} handleDelete={deleteFunc} />
         )}

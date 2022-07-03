@@ -4,7 +4,7 @@ import * as S from "./ViewProductsList.styles"
 import { faX } from "@fortawesome/free-solid-svg-icons"
 import Button from "../Button/Button"
 
-const ViewProductsList = ({ products, handleDelete }) => {
+const ViewProductsList = ({ products, handleDelete, isCart }) => {
   return (
     <S.Content>
       <S.Table>
@@ -13,36 +13,45 @@ const ViewProductsList = ({ products, handleDelete }) => {
             <th>Product ID</th>
             <th>Product Image</th>
             <th>Product Title</th>
-            <th>Product Category</th>
+            {!isCart && <th>Product Category</th>}
             <th>Product Price</th>
-            <th>Product Description</th>
+            {!isCart && <th>Product Description</th>}
+            {isCart && <th>Quantity</th>}
+            {!isCart && <th>In Stock:</th>}
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
-            <tr key={product.id}>
-              <S.Td>{product.id}</S.Td>
-              <S.Td>
-                {
-                  <S.Img
-                    src={`${process.env.REACT_APP_BACKEND_URL}/v1/products/img/${product.img}`}
-                    alt={product.title}
-                  />
-                }
-              </S.Td>
-              <S.Td>{product.title}</S.Td>
-              <S.Td>{product.category}</S.Td>
-              <S.Td>{product.price}</S.Td>
-              {product.description && <S.Td>{product.description}</S.Td>}
-              <S.Td>
-                <Button
-                  handleClick={() => handleDelete(product)}
-                  icon={faX}
-                ></Button>
-              </S.Td>
-            </tr>
-          ))}
+          {products.map((productsInfo) => {
+            let convertedProduct = isCart ? productsInfo.product : productsInfo
+            return (
+              <tr key={convertedProduct.id}>
+                <S.Td>{convertedProduct.id}</S.Td>
+                <S.Td>
+                  {
+                    <S.Img
+                      src={`${process.env.REACT_APP_BACKEND_URL}/v1/products/img/${convertedProduct.img}`}
+                      alt={convertedProduct.title}
+                    />
+                  }
+                </S.Td>
+                <S.Td>{convertedProduct.title}</S.Td>
+                {!isCart && <S.Td>{convertedProduct.category}</S.Td>}
+                <S.Td>{convertedProduct.price}</S.Td>
+                {!isCart && convertedProduct.description && (
+                  <S.Td>{convertedProduct.description}</S.Td>
+                )}
+                {isCart && <S.Td>{productsInfo.count}</S.Td>}
+                {!isCart && <S.Td>{productsInfo.inStock}</S.Td>}
+                <S.Td>
+                  <Button
+                    handleClick={() => handleDelete(convertedProduct)}
+                    icon={faX}
+                  ></Button>
+                </S.Td>
+              </tr>
+            )
+          })}
         </tbody>
       </S.Table>
     </S.Content>
@@ -52,11 +61,11 @@ const ViewProductsList = ({ products, handleDelete }) => {
 ViewProductsList.propTypes = {
   products: PropTypes.arrayOf(
     PropTypes.shape({
-      img: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      category: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      description: PropTypes.string.isRequired,
+      img: PropTypes.string,
+      title: PropTypes.string,
+      category: PropTypes.string,
+      price: PropTypes.number,
+      description: PropTypes.string,
     }).isRequired
   ),
 }

@@ -27,7 +27,6 @@ const mapStateToProps = (state) => {
   for (const key in Object(state.cart.value)) {
     sum += Object(state.cart.value)[key].count
   }
-  console.log(sum)
   return {
     value: sum,
   }

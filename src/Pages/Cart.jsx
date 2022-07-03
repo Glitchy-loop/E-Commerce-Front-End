@@ -11,6 +11,8 @@ import ViewProductsList from "../components/ViewProductsList/ViewProductsList"
 import { useDispatch } from "react-redux"
 import { removeProductFromCart } from "../redux/Cart/cartSlice"
 import { connect } from "react-redux"
+import state from "../redux/store"
+// console.log(Object.keys(state.getState()))
 
 const Cart = (props) => {
   const [error, setError] = useState()
@@ -20,13 +22,19 @@ const Cart = (props) => {
 
   const removeFromCart = (item) => {
     dispatch(removeProductFromCart(item))
-    console.log(item)
   }
 
   const createOrder = async () => {
     const productIds = props.products.map((product) => {
       return product.id
     })
+
+    const finalCart = {
+      productId: productIds.toString(),
+      userId: localStorage.getItem("userId"), // TODO
+    }
+
+    console.log(finalCart)
 
     try {
       const res = await fetch(
@@ -37,14 +45,12 @@ const Cart = (props) => {
             authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            userId: localStorage.getItem("userId"),
-            productId: productIds,
-          }),
+          body: JSON.stringify(state.cart.value),
         }
       )
 
       const data = await res.json()
+      console.log(data)
 
       if (data.err) {
         setError(data.err)
@@ -71,6 +77,7 @@ const Cart = (props) => {
           <ViewProductsList
             products={props.products}
             handleDelete={(item) => removeFromCart(item)}
+            isCart={true}
           />
         )}
 
@@ -81,10 +88,9 @@ const Cart = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(Object.values(state.cart.value))
   return {
     products: Object.values(state.cart.value).map((item) => {
-      return item.product
+      return item
     }),
   }
 }
