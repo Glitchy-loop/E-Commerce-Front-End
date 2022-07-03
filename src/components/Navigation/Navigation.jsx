@@ -1,12 +1,7 @@
 import React, { useState } from "react"
 import * as S from "./Navigation.styles"
 import logo from "../../assets/logo.png"
-import {
-  faUser,
-  faBars,
-  faX,
-  faBasketShopping,
-} from "@fortawesome/free-solid-svg-icons"
+import { faUser, faBars, faX } from "@fortawesome/free-solid-svg-icons"
 import Container from "../Container/Container"
 import Button from "../Button/Button"
 import { Link } from "react-router-dom"
@@ -40,9 +35,6 @@ const Navigation = () => {
             </S.DesktopMenu>
             {/* USER MENU */}
             <S.UserMenu>
-              {/* <Link to='/cart'>
-                <Button icon={faBasketShopping}></Button>
-              </Link> */}
               {links &&
                 links.map((link) => (
                   <Link key={link} to={link.url}>

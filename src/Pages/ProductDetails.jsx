@@ -47,22 +47,6 @@ const ProductDetails = () => {
     navigate("/cart")
   }
 
-  // const shouldShowStock = (product) => {
-  //   // store.getState().cart.value[product.id].count ===
-  //   // product.inStock
-  //   // ? false
-  //   // : true
-
-  //   if (
-  //     store.getState().cart.value[product.id] &&
-  //     store.getState().cart.value[product.id].count === product.inStock
-  //   ) {
-  //     return false
-  //   }
-
-  //   return true
-  // }
-
   return (
     <>
       <Container>

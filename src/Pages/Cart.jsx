@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import Container from "../components/Container/Container"
 import Title from "../components/Title/Title"
 import store from "../redux/store"
@@ -8,10 +8,8 @@ import Button from "../components/Button/Button"
 import { useNavigate } from "react-router-dom"
 import ViewProductsList from "../components/ViewProductsList/ViewProductsList"
 import { useDispatch } from "react-redux"
-import { removeProductFromCart } from "../redux/Cart/cartSlice"
+import { removeProductFromCart, reset } from "../redux/Cart/cartSlice"
 import { connect } from "react-redux"
-import state from "../redux/store"
-// console.log(Object.keys(state.getState()))
 
 const Cart = (props) => {
   const [error, setError] = useState()
@@ -30,12 +28,12 @@ const Cart = (props) => {
         product: productInfo.product,
       }
     })
-    console.log(productsInfos)
+
     const finalCart = {
       productsInfos: productsInfos,
       userId: Number(localStorage.getItem("userId")),
     }
-    console.log(finalCart)
+
     try {
       const res = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/v1/orders/add`,
@@ -50,13 +48,13 @@ const Cart = (props) => {
       )
 
       const data = await res.json()
-      console.log(data)
 
       if (data.err) {
         setError(data.err)
       }
 
       if (data.msg === "Successfully added an order.") {
+        dispatch(reset())
         navigate("/thankyou")
       }
     } catch (err) {

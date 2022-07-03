@@ -3,7 +3,6 @@ import * as S from "./DashboardNav.styles"
 
 const DashboardNav = ({ links }) => {
   const [token, setToken] = useState(localStorage.getItem("token"))
-  const [roles, setRoles] = useState(localStorage.getItem("roles"))
 
   return (
     <S.Nav>

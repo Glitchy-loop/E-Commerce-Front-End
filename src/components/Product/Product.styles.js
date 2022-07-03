@@ -37,3 +37,7 @@ export const Description = styled.div`
   padding-bottom: 1rem;
   max-width: 60%;
 `
+
+export const InStock = styled.div`
+  padding-bottom: 3rem;
+`
