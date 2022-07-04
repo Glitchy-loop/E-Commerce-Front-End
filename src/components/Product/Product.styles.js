@@ -16,17 +16,13 @@ export const Title = styled.div`
   text-decoration: none;
   font-size: 1.1rem;
   padding: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 10%;
 `
 
 export const Price = styled.div`
   font-size: 1.5rem;
   text-decoration: none;
-  padding-bottom: 1rem;
-
-  &::before {
-    content: '€';
-  }
+  padding-bottom: 8%;
 `
 
 export const Category = styled.div`
