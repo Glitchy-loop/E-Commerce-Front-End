@@ -10,6 +10,7 @@ import ViewProductsList from "../components/ViewProductsList/ViewProductsList"
 import { useDispatch } from "react-redux"
 import { removeProductFromCart, reset } from "../redux/Cart/cartSlice"
 import { connect } from "react-redux"
+import Section from "../components/Section/Section"
 
 const Cart = (props) => {
   const [error, setError] = useState()
@@ -81,9 +82,17 @@ const Cart = (props) => {
               isCart={true}
             />
           )}
-        <div>
+        {props.productsInfos.length > 0 && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              marginRight: "3rem",
+            }}
+          >
             <Button handleClick={() => createOrder()}>Checkout</Button>
-        </div>
+          </div>
+        )}
       </Container>
     </>
   )

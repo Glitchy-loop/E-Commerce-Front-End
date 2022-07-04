@@ -47,7 +47,7 @@ const ThankYou = () => {
     <>
       <Container>
         {error && <Notification>{error}</Notification>}
-        <Title title='Your purchase was complete.' />
+        <Title title={`Thank you. Your order was succesfully completed.`} />
         {orders && orders.length > 0 && <OrderList orders={orders} />}
       </Container>
     </>
