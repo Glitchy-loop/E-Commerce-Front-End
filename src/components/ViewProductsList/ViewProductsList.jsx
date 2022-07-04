@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import * as S from "./ViewProductsList.styles"
 import { faX } from "@fortawesome/free-solid-svg-icons"
 import Button from "../Button/Button"
+import { Link } from "react-router-dom"
 
 const ViewProductsList = ({ products, handleDelete, isCart }) => {
   return (
@@ -28,12 +29,12 @@ const ViewProductsList = ({ products, handleDelete, isCart }) => {
               <tr key={convertedProduct.id}>
                 <S.Td>{convertedProduct.id}</S.Td>
                 <S.Td>
-                  {
+                  <Link to={`/product/${productsInfo.product.id}`}>
                     <S.Img
                       src={`${process.env.REACT_APP_BACKEND_URL}/v1/products/img/${convertedProduct.img}`}
                       alt={convertedProduct.title}
                     />
-                  }
+                  </Link>
                 </S.Td>
                 <S.Td>{convertedProduct.title}</S.Td>
                 {!isCart && <S.Td>{convertedProduct.category}</S.Td>}
