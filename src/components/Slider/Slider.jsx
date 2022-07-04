@@ -22,14 +22,16 @@ const Slider = ({ items }) => {
         items.map((item) => (
           <SwiperSlide key={item.title} className='swiper-slide'>
             <S.Left>
-              <S.ProductTitle>{item.title}</S.ProductTitle>
-              <S.ProductDescription>{item.description}</S.ProductDescription>
-            </S.Left>
-            <S.Right>
               <img
                 src={`${process.env.REACT_APP_BACKEND_URL}/v1/products/img/${item.img}`}
                 alt={item.title}
               />
+            </S.Left>
+            <S.Right>
+              <S.StyledLink to={`/product/${item.id}`}>
+                {item.title}
+              </S.StyledLink>
+              <S.ProductDescription>{item.description}</S.ProductDescription>
             </S.Right>
           </SwiperSlide>
         ))}
