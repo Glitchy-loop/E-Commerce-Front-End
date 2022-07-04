@@ -36,7 +36,7 @@ const Orders = () => {
         `${process.env.REACT_APP_BACKEND_URL}/v1/orders/all`,
         {
           headers: {
-            authorization: `Bearer ${localStorage.getItem("token")}`,
+            authorization: `Bearer ${token}`,
           },
         }
       )
@@ -55,7 +55,7 @@ const Orders = () => {
         `${process.env.REACT_APP_BACKEND_URL}/v1/orders/customer/${userId}`,
         {
           headers: {
-            authorization: `Bearer ${localStorage.getItem("token")}`,
+            authorization: `Bearer ${token}`,
           },
         }
       )
@@ -64,8 +64,6 @@ const Orders = () => {
       if (data.err) {
         return <Notification>{data.err}</Notification>
       }
-
-      console.log(data)
 
       setOrders(data)
     } catch (err) {
