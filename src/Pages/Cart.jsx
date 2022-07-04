@@ -81,8 +81,9 @@ const Cart = (props) => {
               isCart={true}
             />
           )}
-
-        <Button handleClick={() => createOrder()}>Checkout</Button>
+        <div>
+            <Button handleClick={() => createOrder()}>Checkout</Button>
+        </div>
       </Container>
     </>
   )
