@@ -19,6 +19,7 @@ const DashboardNav = ({ links }) => {
             localStorage.removeItem("token")
             localStorage.removeItem("roles")
             localStorage.removeItem("userId")
+            localStorage.removeItem("orderId")
           }}
         >
           Log out

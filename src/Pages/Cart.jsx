@@ -16,6 +16,7 @@ const Cart = (props) => {
   const dispatch = useDispatch()
   const [token, setToken] = useState(localStorage.getItem("token"))
   const navigate = useNavigate()
+  const [orderId, setOrderId] = useState(localStorage.getItem("orderId"))
 
   const removeFromCart = (item) => {
     dispatch(removeProductFromCart(item))
@@ -54,8 +55,9 @@ const Cart = (props) => {
       }
 
       if (data.msg === "Successfully added an order.") {
+        setOrderId(localStorage.setItem("orderId", data.orderId))
         dispatch(reset())
-        navigate("/thankyou")
+        navigate(`/thankyou/${data.orderId}`)
       }
     } catch (err) {
       return setError(err.msg)

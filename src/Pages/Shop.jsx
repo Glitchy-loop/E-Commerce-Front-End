@@ -96,6 +96,7 @@ const Shop = () => {
     getCategories()
   }, [])
 
+  // Get category by name
   const handleCategory = async (e) => {
     try {
       const res = await fetch(
@@ -107,13 +108,13 @@ const Shop = () => {
         setError(data.err)
       }
 
-      console.log(data)
       setProducts(data)
     } catch (err) {
       return setError(err.msg)
     }
   }
 
+  // Show all filter
   const displayAll = () => {
     getProducts()
   }
