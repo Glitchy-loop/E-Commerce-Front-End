@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import CategoriesFilter from "../components/CategoriesFilter/CategoriesFilter"
 import Container from "../components/Container/Container"
 import Loader from "../components/Loader/Loader"
 import Notification from "../components/Notification/Notification"
@@ -10,6 +11,7 @@ import Title from "../components/Title/Title"
 const Shop = () => {
   const [products, setProducts] = useState()
   const [error, setError] = useState()
+  const [categories, setCategories] = useState([])
 
   const getProducts = async () => {
     try {
@@ -22,7 +24,6 @@ const Shop = () => {
         setError("No products found.")
       }
 
-      // console.log(data)
       return setProducts(data)
     } catch (err) {
       return setError(err.message)
@@ -66,11 +67,41 @@ const Shop = () => {
     getProducts()
   }, [])
 
+  // Get product categories
+  const getCategories = async () => {
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/v1/products/categories`
+      )
+      const data = await res.json()
+
+      if (data.err) {
+        setError(data.err)
+      }
+
+      let uniqueCategories = []
+      data.forEach((element) => {
+        if (!uniqueCategories.includes(element.category)) {
+          uniqueCategories.push(element.category)
+        }
+      })
+
+      setCategories(uniqueCategories)
+    } catch (err) {
+      return setError(err.msg)
+    }
+  }
+
+  useEffect(() => {
+    getCategories()
+  }, [])
+
   return (
     <>
       <Container>
         <Section>
           <Title title='Shop' />
+          <CategoriesFilter categories={categories} />
           <SearchInput
             placeholder='Product title or category...'
             handleSearch={(e) => searchProducts(e)}
