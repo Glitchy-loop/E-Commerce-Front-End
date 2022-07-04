@@ -96,12 +96,42 @@ const Shop = () => {
     getCategories()
   }, [])
 
+  const handleCategory = async (e) => {
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/v1/products/categories/${e}`
+      )
+      const data = await res.json()
+
+      if (data.err) {
+        setError(data.err)
+      }
+
+      console.log(data)
+      setProducts(data)
+    } catch (err) {
+      return setError(err.msg)
+    }
+  }
+
+  const displayAll = () => {
+    getProducts()
+  }
+
   return (
     <>
       <Container>
         <Section>
           <Title title='Shop' />
-          <CategoriesFilter categories={categories} />
+          {!categories && <Loader />}
+          {categories && categories.length === 0 && (
+            <div>No product categories were found.</div>
+          )}
+          <CategoriesFilter
+            categories={categories}
+            handleClick={(e) => handleCategory(e)}
+            showAll={() => displayAll()}
+          />
           <SearchInput
             placeholder='Product title or category...'
             handleSearch={(e) => searchProducts(e)}
