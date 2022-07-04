@@ -38,6 +38,7 @@ const AddProduct = () => {
     fd.append("category", inputs.category)
     fd.append("price", Number(inputs.price))
     fd.append("description", inputs.description)
+    fd.append("inStock", Number(inputs.inStock))
 
     try {
       const res = await fetch(

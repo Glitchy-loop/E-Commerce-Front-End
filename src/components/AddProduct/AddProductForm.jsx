@@ -64,6 +64,17 @@ const AddProductForm = ({ handleSubmit }) => {
             })
           }
         />
+        <TextInput
+          type='text'
+          label='Stock'
+          placeholder='Product stock'
+          handleChange={(inStock) =>
+            updateProductValues({
+              ...productValues,
+              inStock: inStock,
+            })
+          }
+        />
         <Button type='submit'>Add</Button>
       </S.Form>
     </Section>
