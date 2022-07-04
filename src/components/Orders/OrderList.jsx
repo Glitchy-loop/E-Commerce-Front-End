@@ -11,6 +11,7 @@ const OrderList = ({ orders }) => {
           <th>Customer email</th>
           <th>Product title</th>
           <th>Price</th>
+          <th>Quantity</th>
           <th>Ordered</th>
         </tr>
       </thead>
@@ -22,6 +23,7 @@ const OrderList = ({ orders }) => {
               <S.Td>{order.email}</S.Td>
               <S.Td>{order.title}</S.Td>
               <S.Td>€{order.price}</S.Td>
+              <S.Td>{order.quantity}</S.Td>
               <S.Td>
                 {order.timestamp
                   .replace("Z", "")

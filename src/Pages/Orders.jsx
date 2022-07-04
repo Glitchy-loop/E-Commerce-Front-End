@@ -42,8 +42,6 @@ const Orders = () => {
       )
       const data = await res.json()
 
-      console.log(data)
-
       setOrders(data)
     } catch (err) {
       return setError(err.message)
