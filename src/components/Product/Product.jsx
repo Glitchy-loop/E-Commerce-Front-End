@@ -30,10 +30,9 @@ const Product = ({
         />
       )}
       <S.Title>{title}</S.Title>
-      <S.Category>{category}</S.Category>
       {price && <S.Price>{price}</S.Price>}
       {description && <S.Description>{description}</S.Description>}
-      {category && <S.Category>{category}</S.Category>}
+      {category && <S.Category>Category: {category}</S.Category>}
       {showStock && <S.InStock>{handleStock(inStock)}</S.InStock>}
       {inStock !== 0 && addToCart && (
         <Button handleClick={addToCart}>Add to cart</Button>
