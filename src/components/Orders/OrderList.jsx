@@ -11,7 +11,7 @@ const OrderList = ({ orders }) => {
           <th>Customer email</th>
           <th>Product title</th>
           <th>Price</th>
-          <th>Order time</th>
+          <th>Ordered</th>
         </tr>
       </thead>
       <tbody>

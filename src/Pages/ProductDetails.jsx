@@ -40,7 +40,7 @@ const ProductDetails = () => {
       store.getState().cart.value[item.id] &&
       store.getState().cart.value[item.id].count === item.inStock
     ) {
-      alert(`You can't add more items, than available in stock.`)
+      setError(`You can't add more items, than available in stock.`)
       return
     }
     dispatch(addProductToCart(item))
