@@ -25,7 +25,7 @@ const Product = ({
     <S.Product>
       {img && (
         <S.Img
-          src={process.env.REACT_APP_BACKEND_URL + "/v1/products/img/" + img}
+          src={`${process.env.REACT_APP_S3_BUCKET_URL}/${img}`}
           alt={title}
         />
       )}

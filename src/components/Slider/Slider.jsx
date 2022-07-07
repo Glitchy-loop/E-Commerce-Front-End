@@ -27,7 +27,7 @@ const Slider = ({ items }) => {
             </S.Left>
             <S.Right>
               <img
-                src={`${process.env.REACT_APP_BACKEND_URL}/v1/products/img/${item.img}`}
+                src={`${process.env.REACT_APP_S3_BUCKET_URL}/${item.img}`}
                 alt={item.title}
               />
             </S.Right>
