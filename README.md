@@ -12,6 +12,19 @@ products from MySQL database and displays them. Application provides registratio
 - Users can click on any product to get more information. 
 - Users can select items and add them to their shopping cart, checkout and create a new order.
 
+## Getting Started
+To get started  you can simply clone this `E-Commerce-Front-End` repository and install the dependencies.
+
+Install dependencies with this command:
+```bash
+npm install
+```
+
+Run the application with this command:
+```bash
+npm start
+```
+
 ## Tech Stack
 * ReactJs
 * Node.js
