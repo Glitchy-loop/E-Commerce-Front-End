@@ -5,5 +5,5 @@
 * ReactJs
 * Node.js
 * Express.js
-* Bootstrap
-* ui-Router
+* Styled-Components
+* Redux
