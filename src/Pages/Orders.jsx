@@ -21,9 +21,9 @@ const clientLinks = [
 const Orders = () => {
   const [orders, setOrders] = useState()
   const [error, setError] = useState()
-  const [token, setToken] = useState(localStorage.getItem("token"))
-  const [roles, setRoles] = useState(localStorage.getItem("roles"))
-  const [userId, setUserId] = useState(localStorage.getItem("userId"))
+  const [token] = useState(localStorage.getItem("token"))
+  const [roles] = useState(localStorage.getItem("roles"))
+  const [userId] = useState(localStorage.getItem("userId"))
 
   const admin = roles === "1"
   const customer = roles === "0"

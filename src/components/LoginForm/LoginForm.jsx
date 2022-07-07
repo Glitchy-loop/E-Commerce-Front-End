@@ -36,10 +36,12 @@ const LoginForm = ({ handleSubmit }) => {
             })
           }
         />
-        <Button type='submit'>Login</Button>
-        <S.StyledLink to='/register'>
-          <Button>Don't have an account?</Button>
-        </S.StyledLink>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Button type='submit'>Login</Button>
+          <S.StyledLink to='/register'>
+            <Button>Don't have an account?</Button>
+          </S.StyledLink>
+        </div>
       </S.Form>
     </Section>
   )

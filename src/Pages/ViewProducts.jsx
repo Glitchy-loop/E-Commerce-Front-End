@@ -21,8 +21,8 @@ const clientLinks = [
 const ViewProducts = () => {
   const [error, setError] = useState()
   const [products, setProducts] = useState()
-  const [token, setToken] = useState(localStorage.getItem("token"))
-  const [roles, setRoles] = useState(localStorage.getItem("roles"))
+  const [token] = useState(localStorage.getItem("token"))
+  const [roles] = useState(localStorage.getItem("roles"))
 
   const links = roles === "1" ? adminLinks : clientLinks
 

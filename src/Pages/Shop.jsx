@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react"
 import CategoriesFilter from "../components/CategoriesFilter/CategoriesFilter"
 import Container from "../components/Container/Container"
+import Hero from "../components/Hero/Hero"
 import Loader from "../components/Loader/Loader"
 import Notification from "../components/Notification/Notification"
 import ProductList from "../components/ProductList/ProductList"
 import SearchInput from "../components/SearchInput/SearchInput"
 import Section from "../components/Section/Section"
-import Title from "../components/Title/Title"
 
 const Shop = () => {
   const [products, setProducts] = useState()
@@ -123,7 +123,12 @@ const Shop = () => {
     <>
       <Container>
         <Section>
-          <Title title='Shop' />
+          <Hero
+            title='Shop'
+            imgUrl={
+              "https://cdn.pixabay.com/photo/2021/12/23/03/58/da-guojing-6888603_960_720.jpg"
+            }
+          />
           {!categories && <Loader />}
           {categories && categories.length === 0 && (
             <div>No product categories were found.</div>

@@ -55,13 +55,14 @@ const ProductDetails = () => {
         {!product && <div>No product found.</div>}
         {product && (
           <>
-            <Title title={`${product.title}`} subtitle='product details' />
+            <Title title={`${product.title}`} />
             <div className='productView'>
               <div className='leftProductView'>
                 <Product img={product.img} />
               </div>
               <div className='rightProductView'>
                 <Product
+                  isProductView
                   key={product.title}
                   title={product.title}
                   category={product.category}

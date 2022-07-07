@@ -12,19 +12,13 @@ const Product = ({
   addToCart,
   inStock,
   showStock,
+  isProductView,
 }) => {
   const handleStock = (item) => {
     if (!item) {
-      return (
-        <span style={{ ontStyle: "italic", color: "red" }}>Out of stock.</span>
-      )
+      return <span style={{ color: "red" }}>Out of stock.</span>
     } else {
-      return (
-        <div>
-          <span style={{ fontStyle: "italic" }}>In stock: </span>
-          {item}
-        </div>
-      )
+      return <span>In stock: {item}.</span>
     }
   }
 
@@ -39,19 +33,18 @@ const Product = ({
       <S.Title>{title}</S.Title>
       {price && (
         <S.Price>
-          <span>Price: </span>
-          {price}
+          {isProductView && <span>Price: </span>}€{price}
         </S.Price>
       )}
       {description && (
         <S.Description>
-          <span>Description: </span>
-          {description}
+          <span>Description:</span> {description}
         </S.Description>
       )}
       {category && (
         <S.Category>
-          <span>Category: </span> {category}
+          <span>Category: </span>
+          {category}
         </S.Category>
       )}
       {showStock && <S.InStock>{handleStock(inStock)}</S.InStock>}

@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { Navigation, Autoplay } from "swiper"
 import { SwiperSlide } from "swiper/react"
 import "./Slider.css"
@@ -22,23 +21,21 @@ const Slider = ({ items }) => {
         items.map((item) => (
           <SwiperSlide key={item.title} className='swiper-slide'>
             <S.Left>
+              <S.StyledLink to={`/product/${item.id}`}>
+                <S.ProductTitle>{item.title}</S.ProductTitle>
+              </S.StyledLink>
+              <S.ProductDescription>{item.description}</S.ProductDescription>
+            </S.Left>
+            <S.Right>
               <img
                 src={`${process.env.REACT_APP_S3_BUCKET_URL}/${item.img}`}
                 alt={item.title}
               />
-            </S.Left>
-            <S.Right>
-              <S.StyledLink to={`/product/${item.id}`}>
-                {item.title}
-              </S.StyledLink>
-              <S.ProductDescription>{item.description}</S.ProductDescription>
             </S.Right>
           </SwiperSlide>
         ))}
     </S.Slider>
   )
 }
-
-Slider.propTypes = {}
 
 export default Slider
