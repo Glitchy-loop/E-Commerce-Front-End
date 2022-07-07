@@ -7,7 +7,7 @@
 products from MySQL database and displays them. Application provides registration form with `2 Roles` - Admin and Client
 
 ## Features :
-- Roles with 2 different privileges
+- User authentication with 2 different privileges
 
 - Admin can ADD/REMOVE products.
 - Admin can see all orders.
