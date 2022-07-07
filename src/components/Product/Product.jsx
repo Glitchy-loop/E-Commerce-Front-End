@@ -15,9 +15,16 @@ const Product = ({
 }) => {
   const handleStock = (item) => {
     if (!item) {
-      return <span style={{ color: "red" }}>Out of stock.</span>
+      return (
+        <span style={{ ontStyle: "italic", color: "red" }}>Out of stock.</span>
+      )
     } else {
-      return <span>In stock: {item}.</span>
+      return (
+        <div>
+          <span style={{ fontStyle: "italic" }}>In stock: </span>
+          {item}
+        </div>
+      )
     }
   }
 
@@ -30,9 +37,23 @@ const Product = ({
         />
       )}
       <S.Title>{title}</S.Title>
-      {price && <S.Price>{price}</S.Price>}
-      {description && <S.Description>Description: {description}</S.Description>}
-      {category && <S.Category>Category: {category}</S.Category>}
+      {price && (
+        <S.Price>
+          <span>Price: </span>
+          {price}
+        </S.Price>
+      )}
+      {description && (
+        <S.Description>
+          <span>Description: </span>
+          {description}
+        </S.Description>
+      )}
+      {category && (
+        <S.Category>
+          <span>Category: </span> {category}
+        </S.Category>
+      )}
       {showStock && <S.InStock>{handleStock(inStock)}</S.InStock>}
       {inStock !== 0 && addToCart && (
         <Button handleClick={addToCart}>Add to cart</Button>
