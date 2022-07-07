@@ -4,6 +4,5 @@
 ## Tech Stack
 * ReactJs
 * Node.js
-* Express.js
 * Styled-Components
 * Redux
