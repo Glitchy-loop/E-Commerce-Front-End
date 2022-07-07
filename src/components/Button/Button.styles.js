@@ -10,6 +10,10 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 700px) {
+    padding: 0.5rem;
+  }
 `
 
 export const StyledIcon = styled(FontAwesomeIcon)`

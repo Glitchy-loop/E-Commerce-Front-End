@@ -45,7 +45,9 @@ const RegistrationForm = ({ handleSubmit }) => {
             })
           }
         />
-        <p>What role you wish to register your account with?</p>
+        <p style={{ padding: ".5rem 0" }}>
+          What role you wish to register your account with?
+        </p>
         <Radio
           label='Customer'
           name='roles'
@@ -62,10 +64,12 @@ const RegistrationForm = ({ handleSubmit }) => {
             updateRegisterValues({ ...registerValues, roles: roleValue })
           }
         />
-        <Button type='submit'>Register</Button>
-        <S.StyledLink to='/login'>
-          <Button>Already have account?</Button>
-        </S.StyledLink>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Button type='submit'>Register</Button>
+          <S.StyledLink to='/login'>
+            <Button>Already have account?</Button>
+          </S.StyledLink>
+        </div>
       </S.Form>
     </Section>
   )

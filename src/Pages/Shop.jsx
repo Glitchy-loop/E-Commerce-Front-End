@@ -7,7 +7,6 @@ import Notification from "../components/Notification/Notification"
 import ProductList from "../components/ProductList/ProductList"
 import SearchInput from "../components/SearchInput/SearchInput"
 import Section from "../components/Section/Section"
-import Title from "../components/Title/Title"
 
 const Shop = () => {
   const [products, setProducts] = useState()

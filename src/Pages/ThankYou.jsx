@@ -6,12 +6,12 @@ import OrderList from "../components/Orders/OrderList"
 import Title from "../components/Title/Title"
 
 const ThankYou = () => {
-  const [token, setToken] = useState(localStorage.getItem("token"))
+  const [token] = useState(localStorage.getItem("token"))
   const navigate = useNavigate()
   const [error, setError] = useState()
   const { id } = useParams()
   const [orders, setOrders] = useState([])
-  const [orderId, setOrderId] = useState(localStorage.getItem("orderId"))
+  const [orderId] = useState(localStorage.getItem("orderId"))
 
   const getOrder = async () => {
     try {

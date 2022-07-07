@@ -10,12 +10,11 @@ import ViewProductsList from "../components/ViewProductsList/ViewProductsList"
 import { useDispatch } from "react-redux"
 import { removeProductFromCart, reset } from "../redux/Cart/cartSlice"
 import { connect } from "react-redux"
-import Section from "../components/Section/Section"
 
 const Cart = (props) => {
   const [error, setError] = useState()
   const dispatch = useDispatch()
-  const [token, setToken] = useState(localStorage.getItem("token"))
+  const [token] = useState(localStorage.getItem("token"))
   const navigate = useNavigate()
   const [orderId, setOrderId] = useState(localStorage.getItem("orderId"))
 
@@ -50,6 +49,10 @@ const Cart = (props) => {
       )
 
       const data = await res.json()
+
+      if (!token) {
+        navigate("/login")
+      }
 
       if (data.err) {
         setError(data.err)

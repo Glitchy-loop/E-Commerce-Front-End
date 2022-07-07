@@ -12,6 +12,7 @@ const Product = ({
   addToCart,
   inStock,
   showStock,
+  isProductView,
 }) => {
   const handleStock = (item) => {
     if (!item) {
@@ -30,9 +31,22 @@ const Product = ({
         />
       )}
       <S.Title>{title}</S.Title>
-      {price && <S.Price>{price}</S.Price>}
-      {description && <S.Description>Description: {description}</S.Description>}
-      {category && <S.Category>Category: {category}</S.Category>}
+      {price && (
+        <S.Price>
+          {isProductView && <span>Price: </span>}€{price}
+        </S.Price>
+      )}
+      {description && (
+        <S.Description>
+          <span>Description:</span> {description}
+        </S.Description>
+      )}
+      {category && (
+        <S.Category>
+          <span>Category: </span>
+          {category}
+        </S.Category>
+      )}
       {showStock && <S.InStock>{handleStock(inStock)}</S.InStock>}
       {inStock !== 0 && addToCart && (
         <Button handleClick={addToCart}>Add to cart</Button>

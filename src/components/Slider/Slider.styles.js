@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper } from 'swiper/react'
+import { Link } from 'react-router-dom'
 
 export const Slider = styled(Swiper)`
   width: 100%;
@@ -21,8 +22,7 @@ export const Right = styled.div`
 
 export const ProductTitle = styled.div`
   font-size: 1.5rem;
-  padding: 1rem;
-  max-width: 60%;
+  max-width: 80%;
 
   @media (max-width: 600px) {
     font-size: 1.2rem;
@@ -32,4 +32,25 @@ export const ProductTitle = styled.div`
 export const ProductDescription = styled.div`
   font-size: 0.9rem;
   max-width: 60%;
+  padding-top: 1rem;
+`
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #000;
+
+  &::after {
+    content: '';
+    position: relative;
+    display: block;
+    border-bottom: 0.15rem solid #000;
+    width: 0;
+    transition: 500ms;
+    margin: 0 auto;
+    margin-top: 0.2rem;
+  }
+  &:hover::after {
+    border-bottom: 0.15rem solid #000;
+    width: 100%;
+  }
 `
