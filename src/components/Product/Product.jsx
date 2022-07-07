@@ -30,7 +30,6 @@ const Product = ({
           alt={title}
         />
       )}
-      <S.Title>{title}</S.Title>
       {price && (
         <S.Price>
           {isProductView && <span>Price: </span>}€{price}
