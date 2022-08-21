@@ -32,14 +32,14 @@ const ViewProductsList = ({ products, handleDelete, isCart }) => {
                   {isCart && (
                     <Link to={`/product/${productsInfo.product.id}`}>
                       <S.Img
-                        src={`${process.env.REACT_APP_S3_BUCKET_URL}/${convertedProduct.img}`}
+                        src={`${process.env.REACT_APP_BACKEND_URL}/v1/products/img/${convertedProduct.img}`}
                         alt={convertedProduct.title}
                       />
                     </Link>
                   )}
                   {!isCart && (
                     <S.Img
-                      src={`${process.env.REACT_APP_S3_BUCKET_URL}/${convertedProduct.img}`}
+                      src={`${process.env.REACT_APP_BACKEND_URL}/v1/products/img/${convertedProduct.img}`}
                       alt={convertedProduct.title}
                     />
                   )}

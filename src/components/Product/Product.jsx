@@ -26,7 +26,7 @@ const Product = ({
     <S.Product>
       {img && (
         <S.Img
-          src={`${process.env.REACT_APP_S3_BUCKET_URL}/${img}`}
+          src={`${process.env.REACT_APP_BACKEND_URL}/v1/products/img/${img}`}
           alt={title}
         />
       )}
@@ -61,7 +61,7 @@ Product.propTypes = {
   category: PropTypes.string,
   price: PropTypes.number,
   description: PropTypes.string,
-  addToCart: PropTypes.func,
+  addToCart: PropTypes.func, //TODO
 }
 
 export default Product
