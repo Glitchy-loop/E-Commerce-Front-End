@@ -35,6 +35,7 @@ const Cart = (props) => {
       userId: Number(localStorage.getItem("userId")),
     }
 
+    console.log(finalCart)
     try {
       const res = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/v1/orders/add`,
@@ -57,6 +58,7 @@ const Cart = (props) => {
       if (data.err) {
         setError(data.err)
       }
+      console.log(data)
 
       if (data.msg === "Successfully added an order.") {
         setOrderId(localStorage.setItem("orderId", data.orderId))
