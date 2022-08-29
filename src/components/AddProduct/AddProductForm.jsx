@@ -22,7 +22,6 @@ const AddProductForm = ({ handleSubmit }) => {
             updateProductValues({ ...productValues, img: img })
           }
         />
-
         <TextInput
           type='text'
           label='Title'

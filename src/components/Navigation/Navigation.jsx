@@ -25,7 +25,9 @@ const Navigation = () => {
               <Link to='/'>
                 <S.Logo src={logo} alt='C' />
               </Link>
-              <h4>COMFORT</h4>
+              <Link style={{ textDecoration: "none", color: "#000" }} to='/'>
+                <p>COMFORT</p>
+              </Link>
             </S.LogoDiv>
             {/* DESKTOP MENU */}
             <S.DesktopMenu>
