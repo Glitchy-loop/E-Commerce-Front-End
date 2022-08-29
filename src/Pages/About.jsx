@@ -13,10 +13,37 @@ const About = () => {
         />
         <Section>
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-            aspernatur libero ab obcaecati minima, eaque, deleniti earum quas
-            incidunt voluptatum blanditiis aperiam accusamus? Dicta nesciunt
-            tenetur cupiditate placeat. Dignissimos, architecto!
+            <h2 style={{ textAlign: "center" }}>
+              WE BELIEVE IN HONEST FURNITURE
+            </h2>
+            <br />
+            Honesty is important to us in both our furniture and our business.
+            We make exceptional furniture devoid of drama or ego. Our designs
+            are simple on purpose to ground your space without demanding the
+            spotlight. We conduct our business with honesty, openness, and a
+            desire to build a community of like-minded people working towards a
+            common goal.
+            <h2 style={{ textAlign: "center" }}>
+              WE BELIEVE IN PROTECTING WHERE WE LIVE
+            </h2>
+            <br />
+            It is our mandate to protect the earth we love and do our part to
+            care for its natural resources. But to us, this means more than just
+            environmental sustainability. It means heavily investing in our
+            community. We believe in growing the local economy and keeping
+            manufacturing right here in Canada.
+            <h2 style={{ textAlign: "center" }}>
+              {" "}
+              WE BELIEVE IN INNOVATIVE SOLUTIONS
+            </h2>
+            <br />
+            We bridge the gap between design and manufacturing. Our
+            multi-discipline experience and intimacy with our material allows
+            for extraordinary innovation in the design, engineering, and
+            manufacturing of solid wood furniture. Say we can’t, and we will.
+            Custom joints, one of a kind hinges, and unique lighting solutions
+            are all in our repertoire. We tackle challenges with knowledge and
+            vision.
           </p>
         </Section>
       </Container>

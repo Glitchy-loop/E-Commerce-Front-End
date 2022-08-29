@@ -12,12 +12,21 @@ export const Left = styled.div`
   width: 50%;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 700px) {
+    width: 100%;
+    text-align: center;
+  }
 `
 
 export const Right = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `
 
 export const ProductTitle = styled.div`
