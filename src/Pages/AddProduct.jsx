@@ -5,6 +5,8 @@ import AddProductForm from "../components/AddProduct/AddProductForm"
 import Notification from "../components/Notification/Notification"
 import { useNavigate } from "react-router-dom"
 import DashboardNav from "../components/DashboardNav/DashboardNav"
+import { storage } from "../firebase"
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage"
 
 const adminLinks = [
   { url: "/dashboard", title: "Dashboard" },
@@ -18,8 +20,10 @@ const clientLinks = [
 ]
 const AddProduct = () => {
   const [error, setError] = useState()
-  const [token, setToken] = useState(localStorage.getItem("token"))
-  const [roles, setRoles] = useState(localStorage.getItem("roles"))
+  const [token] = useState(localStorage.getItem("token"))
+  const [roles] = useState(localStorage.getItem("roles"))
+  const [progress, setProgress] = useState(0)
+  const [imgUrl, setImgUrl] = useState("")
 
   const links = roles === "1" ? adminLinks : clientLinks
 
@@ -40,26 +44,72 @@ const AddProduct = () => {
     fd.append("description", inputs.description)
     fd.append("inStock", Number(inputs.inStock))
 
+    const file = fd.get("img")
+    // console.log(file.name)
+
+    const storageRef = ref(storage, `/files/${file.name}`)
+
     try {
-      const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/v1/products/add`,
-        {
-          method: "POST",
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-          body: fd,
+      // Upload progress
+      const uploadTask = uploadBytesResumable(storageRef, file)
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const prog = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          )
+          setProgress(prog)
+          setError(prog)
+        },
+        (err) => console.log(err),
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref)
+            .then((url) => {
+              setImgUrl(url)
+              console.log(imgUrl)
+            })
+            .then(postData())
         }
       )
-      const data = await res.json()
+      const postData = async () => {
+        try {
+          const productData = {
+            img: imgUrl,
+            title: fd.get("title"),
+            category: fd.get("category"),
+            price: Number(fd.get("price")),
+            description: fd.get("description"),
+            inStock: Number(fd.get("inStock")),
+          }
+          console.log(JSON.stringify(productData))
 
-      if (data.err) {
-        return setError(data.err)
-      }
+          const res = await fetch(
+            `${process.env.REACT_APP_BACKEND_URL}/v1/products/add`,
+            {
+              method: "POST",
+              headers: {
+                authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(productData),
+            }
+          )
+          console.log(res)
+          const data = await res.json()
+          console.log(data)
 
-      if (data.msg) {
-        setError(data.msg)
-        navigate("/dashboard/view-products")
+          if (data.err) {
+            return setError(data.err)
+          }
+
+          if (data.msg) {
+            setError(data.msg)
+            navigate("/dashboard/view-products")
+          }
+        } catch (err) {
+          setError(err.message)
+        }
       }
     } catch (err) {
       return setError(err.message)

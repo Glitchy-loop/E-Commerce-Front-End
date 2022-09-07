@@ -27,10 +27,7 @@ const Slider = ({ items }) => {
               <S.ProductDescription>{item.description}</S.ProductDescription>
             </S.Left>
             <S.Right>
-              <img
-                src={`${process.env.REACT_APP_BACKEND_URL}/v1/products/img/${item.img}`}
-                alt={item.title}
-              />
+              <img src={item.img} alt={item.title} />
             </S.Right>
           </SwiperSlide>
         ))}
