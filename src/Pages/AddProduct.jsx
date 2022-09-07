@@ -23,7 +23,6 @@ const AddProduct = () => {
   const [token] = useState(localStorage.getItem("token"))
   const [roles] = useState(localStorage.getItem("roles"))
   const [progress, setProgress] = useState(0)
-  const [imgUrl, setImgUrl] = useState("")
 
   const links = roles === "1" ? adminLinks : clientLinks
 
@@ -45,7 +44,6 @@ const AddProduct = () => {
     fd.append("inStock", Number(inputs.inStock))
 
     const file = fd.get("img")
-    // console.log(file.name)
 
     const storageRef = ref(storage, `/files/${file.name}`)
 
@@ -64,25 +62,21 @@ const AddProduct = () => {
         },
         (err) => console.log(err),
         () => {
-          getDownloadURL(uploadTask.snapshot.ref)
-            .then((url) => {
-              setImgUrl(url)
-              console.log(imgUrl)
-            })
-            .then(postData())
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            postData(url)
+          })
         }
       )
-      const postData = async () => {
+      const postData = async (url) => {
         try {
           const productData = {
-            img: imgUrl,
+            img: url,
             title: fd.get("title"),
             category: fd.get("category"),
             price: Number(fd.get("price")),
             description: fd.get("description"),
             inStock: Number(fd.get("inStock")),
           }
-          console.log(JSON.stringify(productData))
 
           const res = await fetch(
             `${process.env.REACT_APP_BACKEND_URL}/v1/products/add`,
@@ -95,9 +89,7 @@ const AddProduct = () => {
               body: JSON.stringify(productData),
             }
           )
-          console.log(res)
           const data = await res.json()
-          console.log(data)
 
           if (data.err) {
             return setError(data.err)
