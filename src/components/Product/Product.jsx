@@ -24,12 +24,7 @@ const Product = ({
 
   return (
     <S.Product>
-      {img && (
-        <S.Img
-          src={`${process.env.REACT_APP_BACKEND_URL}/v1/products/img/${img}`}
-          alt={title}
-        />
-      )}
+      {img && <S.Img src={img} alt={title} />}
       <S.Title>{title}</S.Title>
       {price && (
         <S.Price>
