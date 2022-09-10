@@ -3,24 +3,31 @@ import { createSlice } from '@reduxjs/toolkit'
 export const cartSlice = createSlice({
   name: 'addToCart',
   initialState: {
-    value: {}
+    value: { Cart_total: 0, products: {} }
   },
   reducers: {
     addProductToCart: (state, action) => {
-      if (state.value[action.payload.id]) {
-        state.value[action.payload.id]['count'] += 1
+      if (state.value.products[action.payload.id]) {
+        // Jeigu produktas pagal turintis id 'payload.id' egzistuoja globaliam store
+        // tada pridedam prie produkto count +1
+
+        state.value.products[action.payload.id].count += 1
       } else {
-        state.value[action.payload.id] = {
+        // Jeigu produktas pagal id neegzistuoja, sukuriam nauja produkto objekta su count 1
+        state.value.products[action.payload.id] = {
           count: 1,
           product: action.payload
         }
       }
+      state.value.Cart_total += action.payload.price
     },
     removeProductFromCart: (state, action) => {
-      delete state.value[action.payload.id]
+      state.value.Cart_total -=
+        action.payload.price * state.value.products[action.payload.id].count
+      delete state.value.products[action.payload.id]
     },
     reset: (state, action) => {
-      state.value = {}
+      state.value = { Cart_total: 0, products: {} }
     }
   }
 })

@@ -16,6 +16,7 @@ import ThankYou from './Pages/ThankYou'
 import Footer from './components/Footer/Footer'
 import { Provider } from 'react-redux'
 import store from './redux/store'
+import CheckOut from './Pages/CheckOut'
 
 const Router = () => {
   return (
@@ -34,6 +35,7 @@ const Router = () => {
           <Route exact path='/dashboard/add' element={<AddProduct />} />
           <Route exact path='/dashboard/orders' element={<Orders />} />
           <Route exact path='/thankyou/:id' element={<ThankYou />} />
+          <Route exact path='/checkout' element={<CheckOut />} />
           <Route
             exact
             path='/dashboard/view-products'
