@@ -1,0 +1,19 @@
+form.stripe-form {
+    min-width: 25rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form.stripe-form fieldset {
+    width: 25rem;
+    height: 2rem;
+}
+
+@media (max-width:700px) {
+    form.stripe-form fieldset {
+        width: 20rem;
+        height: 1rem;
+    }
+}

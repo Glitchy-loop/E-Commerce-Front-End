@@ -37,8 +37,8 @@ const ProductDetails = () => {
 
   const addToCart = (item) => {
     if (
-      store.getState().cart.value[item.id] &&
-      store.getState().cart.value[item.id].count === item.inStock
+      store.getState().cart.value.products[item.id] &&
+      store.getState().cart.value.products[item.id].count === item.inStock
     ) {
       setError(`You can't add more items, than available in stock.`)
       return
