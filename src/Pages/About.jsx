@@ -16,6 +16,9 @@ const About = () => {
             <h2 style={{ textAlign: "center" }}>
               WE BELIEVE IN HONEST FURNITURE
             </h2>
+            <hr
+              style={{ width: "3rem", height: ".2rem", background: "#000" }}
+            />
             <br />
             Honesty is important to us in both our furniture and our business.
             We make exceptional furniture devoid of drama or ego. Our designs
@@ -26,6 +29,9 @@ const About = () => {
             <h2 style={{ textAlign: "center" }}>
               WE BELIEVE IN PROTECTING WHERE WE LIVE
             </h2>
+            <hr
+              style={{ width: "3rem", height: ".2rem", background: "#000" }}
+            />
             <br />
             It is our mandate to protect the earth we love and do our part to
             care for its natural resources. But to us, this means more than just
@@ -36,6 +42,9 @@ const About = () => {
               {" "}
               WE BELIEVE IN INNOVATIVE SOLUTIONS
             </h2>
+            <hr
+              style={{ width: "3rem", height: ".2rem", background: "#000" }}
+            />
             <br />
             We bridge the gap between design and manufacturing. Our
             multi-discipline experience and intimacy with our material allows

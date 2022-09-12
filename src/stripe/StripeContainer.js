@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import Container from '../components/Container/Container'
 import './style.css'
 import Button from '../components/Button/Button'
+import Notification from '../components/Notification/Notification'
 
 const CARD_OPTIONS = {
   iconStyle: 'solid',
@@ -86,6 +87,11 @@ const PaymentForm = props => {
 
   const handleSubmit = async e => {
     e.preventDefault()
+
+    setError(
+      'Please do not close the windows while we are processing your payment'
+    )
+
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardElement)
@@ -103,16 +109,16 @@ const PaymentForm = props => {
         )
 
         if (response.data.success) {
-          console.log(id)
-          console.log('Successful payment')
+          // console.log(id)
+          // console.log('Successful payment')
           setSuccess(true)
           createOrder()
         }
       } catch (error) {
-        console.log('Error', error)
+        setError('Error: ', error)
       }
     } else {
-      console.log(error.message)
+      setError(error.message)
     }
   }
 
@@ -120,11 +126,20 @@ const PaymentForm = props => {
     <>
       {!success ? (
         <Container state={store.getState()}>
+          <div style={{ margin: '0 auto' }}>
+            {error && <Notification>{error}</Notification>}
+          </div>
+
           <form className='stripe-form' onSubmit={handleSubmit}>
-            <fieldset>
+            <fieldset className='FormGroup'>
               <CardElement options={CARD_OPTIONS} />
             </fieldset>
-            <Button type='submit'>Pay</Button>
+            {error ===
+            'Please do not close the windows while we are processing your payment' ? (
+              <></>
+            ) : (
+              <Button type='submit'>Pay</Button>
+            )}
           </form>
         </Container>
       ) : (

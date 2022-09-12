@@ -19,7 +19,7 @@ export const Img = styled.img`
 
 export const Title = styled.div`
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   padding: 1rem;
 `
 

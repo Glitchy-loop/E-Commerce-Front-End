@@ -56,12 +56,32 @@ const Navigation = () => {
 
           {/* MOBILE MENU */}
           {hiddenMenu && (
-            <S.Menu>
-              <S.StyledLink to='/'>Home</S.StyledLink>
-              <S.StyledLink to='/shop'>Shop</S.StyledLink>
-              <S.StyledLink to='/about'>About</S.StyledLink>
-              <S.StyledLink to='/dashboard'>My-Account</S.StyledLink>
-              <S.StyledLink to='/cart'>CART</S.StyledLink>
+            <S.Menu
+              initial={{ height: 0, opacity: 0 }}
+              animate={{
+                height: "auto",
+                opacity: 1,
+                transition: { delay: 0.1 },
+              }}
+            >
+              <S.StyledLink onClick={() => setHiddenMenu(false)} to='/'>
+                Home
+              </S.StyledLink>
+              <S.StyledLink onClick={() => setHiddenMenu(false)} to='/shop'>
+                Shop
+              </S.StyledLink>
+              <S.StyledLink onClick={() => setHiddenMenu(false)} to='/about'>
+                About
+              </S.StyledLink>
+              <S.StyledLink
+                onClick={() => setHiddenMenu(false)}
+                to='/dashboard'
+              >
+                My-Account
+              </S.StyledLink>
+              <S.StyledLink onClick={() => setHiddenMenu(false)} to='/cart'>
+                CART
+              </S.StyledLink>
             </S.Menu>
           )}
         </S.Header>
