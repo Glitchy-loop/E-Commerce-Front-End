@@ -15,7 +15,7 @@ products from MySQL database and displays them. Application provides registratio
 - Users can select to display products in a single category.
 - Users can click on any product to get more information. 
 - Users can select product and ADD/REMOVE them to/from their shopping cart
-- Users can checkout and create a new order.
+- Users can checkout and create a new order with STRIPE payment processing platform.
 
 ## Getting Started
 To get started  you can simply clone this `E-Commerce-Front-End` repository and install the dependencies.
