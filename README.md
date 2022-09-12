@@ -35,4 +35,5 @@ npm start
 * Node.js
 * Styled-Components
 * Redux
+* Stripe
 
