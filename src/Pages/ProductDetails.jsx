@@ -9,6 +9,7 @@ import Notification from "../components/Notification/Notification"
 import { addProductToCart } from "../redux/Cart/cartSlice"
 import { useDispatch } from "react-redux"
 import store from "../redux/store"
+import ProductDetailsView from "../components/ProductDetailsView/ProductDetailsView"
 
 const ProductDetails = () => {
   const { id } = useParams()
@@ -55,25 +56,18 @@ const ProductDetails = () => {
         {!product && <div>No product found.</div>}
         {product && (
           <>
-            <Title title={`${product.title}`} />
-            <div className='productView'>
-              <div className='leftProductView'>
-                <Product img={product.img} />
-              </div>
-              <div className='rightProductView'>
-                <Product
-                  isProductView
-                  key={product.title}
-                  title={product.title}
-                  category={product.category}
-                  price={product.price}
-                  description={product.description}
-                  addToCart={() => addToCart(product)}
-                  showStock={true}
-                  inStock={product.inStock}
-                />
-              </div>
-            </div>
+            <ProductDetailsView
+              isProductView
+              key={product.title}
+              img={product.img}
+              title={product.title}
+              category={product.category}
+              price={product.price}
+              description={product.description}
+              addToCart={() => addToCart(product)}
+              showStock={true}
+              inStock={product.inStock}
+            />
           </>
         )}
       </Container>
@@ -91,3 +85,28 @@ ProductDetails.propTypes = {
 }
 
 export default ProductDetails
+
+{
+  /* <Title title={`${product.title}`} />
+<div className='productView'>
+  <div className='leftProductView'>
+    <Product img={product.img} />
+  </div>
+  <div className='rightProductView'>
+    <div className='rightProductTitle'>
+      <Product title={product.title} />
+    </div>
+    <Product
+      isProductView
+      key={product.title}
+      title={product.title}
+      category={product.category}
+      price={product.price}
+      description={product.description}
+      addToCart={() => addToCart(product)}
+      showStock={true}
+      inStock={product.inStock}
+    />
+  </div>
+</div> */
+}

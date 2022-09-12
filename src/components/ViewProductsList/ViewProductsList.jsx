@@ -9,25 +9,27 @@ const ViewProductsList = ({ products, handleDelete, isCart }) => {
   return (
     <S.Content>
       <S.Table>
-        <thead>
-          <tr>
-            <th>Product ID</th>
-            <th>Product Image</th>
-            <th>Product Title</th>
-            {!isCart && <th>Product Category</th>}
-            <th>Product Price</th>
-            {!isCart && <th>Product Description</th>}
-            {isCart && <th>Quantity</th>}
-            {!isCart && <th>In Stock:</th>}
-            <th>Delete</th>
-          </tr>
-        </thead>
+        {!isCart && (
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Product Image</th>
+              <th>Product Title</th>
+              {!isCart && <th>Product Category</th>}
+              <th>Product Price</th>
+              {!isCart && <th>Product Description</th>}
+              {isCart && <th>Quantity</th>}
+              {!isCart && <th>In Stock:</th>}
+              <th>Delete</th>
+            </tr>
+          </thead>
+        )}
         <tbody>
           {products.map((productsInfo) => {
             let convertedProduct = isCart ? productsInfo.product : productsInfo
             return (
               <tr key={convertedProduct.id}>
-                <S.Td>{convertedProduct.id}</S.Td>
+                {!isCart && <S.Td>{convertedProduct.id}</S.Td>}
                 <S.Td>
                   {isCart && (
                     <Link to={`/product/${productsInfo.product.id}`}>
@@ -46,7 +48,7 @@ const ViewProductsList = ({ products, handleDelete, isCart }) => {
                 </S.Td>
                 <S.Td>{convertedProduct.title}</S.Td>
                 {!isCart && <S.Td>{convertedProduct.category}</S.Td>}
-                <S.Td>{convertedProduct.price}</S.Td>
+                <S.Td>€{convertedProduct.price}</S.Td>
                 {!isCart && convertedProduct.description && (
                   <S.Td>{convertedProduct.description}</S.Td>
                 )}

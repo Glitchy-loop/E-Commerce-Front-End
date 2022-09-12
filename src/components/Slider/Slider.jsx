@@ -27,7 +27,9 @@ const Slider = ({ items }) => {
               <S.ProductDescription>{item.description}</S.ProductDescription>
             </S.Left>
             <S.Right>
-              <img src={item.img} alt={item.title} />
+              <S.StyledLinkForImage to={`/product/${item.id}`}>
+                <img src={item.img} alt={item.title} />{" "}
+              </S.StyledLinkForImage>
             </S.Right>
           </SwiperSlide>
         ))}

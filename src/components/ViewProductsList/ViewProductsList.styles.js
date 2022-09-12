@@ -31,7 +31,7 @@ export const Td = styled.td`
 `
 
 export const Img = styled.img`
-  width: 100%;
+  width: ${({ isCart }) => (isCart ? '100%' : '5rem')};
   height: auto;
 `
 

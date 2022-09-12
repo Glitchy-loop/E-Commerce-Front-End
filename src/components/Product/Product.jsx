@@ -56,7 +56,7 @@ Product.propTypes = {
   category: PropTypes.string,
   price: PropTypes.number,
   description: PropTypes.string,
-  addToCart: PropTypes.func, //TODO
+  addToCart: PropTypes.func,
 }
 
 export default Product

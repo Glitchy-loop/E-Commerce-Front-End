@@ -1,15 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
-
-const fadeIn = keyframes`
-  from {
-    opacity:0;
-  }
-  to {
-    opacity: 1;
-  }
-`
+import { motion } from 'framer-motion'
 
 const slideDown = keyframes`
   from {
@@ -37,7 +29,12 @@ export const Navigation = styled.nav`
   justify-content: space-between;
 
   @media (min-width: 600px) {
-    justify-content: space-around;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 600px) {
+    display: flex;
+    justify-content: space-between !important;
   }
 `
 
@@ -54,9 +51,13 @@ export const Logo = styled.img`
   margin-right: 0.2rem;
   height: auto;
   padding-left: 2rem;
+
+  @media (max-width: 600px) {
+    padding-left: 0;
+  }
 `
 
-export const Menu = styled.nav`
+export const Menu = styled(motion.nav)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,6 +79,10 @@ export const MobileMenuIcon = styled(FontAwesomeIcon)`
 
   @media (min-width: 600px) {
     display: none;
+  }
+
+  @media (max-width: 600px) {
+    margin-right: 0;
   }
 `
 
@@ -125,7 +130,7 @@ export const UserMenu = styled.div`
     margin: 1rem;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 599px) {
     display: none;
   }
 `

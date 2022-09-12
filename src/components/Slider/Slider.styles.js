@@ -31,10 +31,13 @@ export const Right = styled.div`
 
 export const ProductTitle = styled.div`
   font-size: 1.5rem;
-  max-width: 80%;
-
-  @media (max-width: 600px) {
-    font-size: 1.2rem;
+  max-width: 100%;
+  @media (max-width: 700px) {
+    position: absolute;
+    background-color: #ffede1;
+    padding: 1rem;
+    left: 0;
+    top: 2rem;
   }
 `
 
@@ -42,6 +45,15 @@ export const ProductDescription = styled.div`
   font-size: 0.9rem;
   max-width: 60%;
   padding-top: 1rem;
+  text-align: center;
+
+  @media (max-width: 700px) {
+    position: absolute;
+    background-color: #ffede1;
+    padding: 1rem;
+    left: 0;
+    top: 5.5rem;
+  }
 `
 
 export const StyledLink = styled(Link)`
@@ -62,4 +74,9 @@ export const StyledLink = styled(Link)`
     border-bottom: 0.15rem solid #000;
     width: 100%;
   }
+`
+
+export const StyledLinkForImage = styled(Link)`
+  text-decoration: none;
+  color: #000;
 `
