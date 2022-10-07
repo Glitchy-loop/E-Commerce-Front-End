@@ -12,7 +12,7 @@ const publicLinks = [{ url: "/login", title: "Login" }]
 
 const Navigation = () => {
   const [hiddenMenu, setHiddenMenu] = useState(false)
-  const [token, setToken] = useState(localStorage.getItem("token"))
+  const [token] = useState(localStorage.getItem("token"))
 
   const links = token ? authLinks : publicLinks
 

@@ -6,6 +6,12 @@ export const Product = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
+  &:hover {
+    img {
+      transform: scale(1.2);
+    }
+  }
+
   span {
     font-size: 0.9rem;
     font-style: italic;
@@ -14,7 +20,8 @@ export const Product = styled.div`
 
 export const Img = styled.img`
   width: 100%;
-  transition: 500ms;
+  transition: 2s;
+  z-index: -10;
 `
 
 export const Title = styled.div`

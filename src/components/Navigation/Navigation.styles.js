@@ -14,7 +14,7 @@ const slideDown = keyframes`
 
 export const Header = styled.header`
   font-family: 'Roboto';
-  border-bottom: 0.1rem solid #c9c9c9;
+  /* border-bottom: 0.1rem solid #c9c9c9; */
   margin: 0 auto;
   box-sizing: border-box;
   padding: 2rem;

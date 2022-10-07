@@ -6,6 +6,10 @@ export const Form = styled.form`
   width: 80%;
   font-size: 1.2rem;
 
+  input {
+    background-color: #f8f8f8;
+  }
+
   p {
     margin: 0;
   }
@@ -17,6 +21,10 @@ export const Form = styled.form`
 
   input[type='radio'] {
     width: 10%;
+  }
+
+  input:focus {
+    background-color: #fff;
   }
 `
 

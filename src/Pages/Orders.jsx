@@ -42,7 +42,6 @@ const Orders = () => {
       )
       const data = await res.json()
 
-      console.log(data)
       if (data.err === "There are no orders.") {
         return <Notification>No orders.</Notification>
       }
