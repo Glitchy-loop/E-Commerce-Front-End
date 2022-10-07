@@ -11,11 +11,19 @@ export const Form = styled.form`
   }
 
   input {
+    background-color: #f8f8f8;
+  }
+
+  input {
     width: 100%;
   }
 
   input[type='radio'] {
     width: 10%;
+  }
+
+  input:focus {
+    background-color: #fff;
   }
 `
 

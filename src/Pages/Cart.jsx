@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux"
 import { removeProductFromCart } from "../redux/Cart/cartSlice"
 import { connect } from "react-redux"
 import CartTotal from "../components/CartTotal/CartTotal"
+import { Link } from "react-router-dom"
 
 const Cart = (props) => {
   const [error, setError] = useState()
@@ -31,7 +32,12 @@ const Cart = (props) => {
         {error && <Notification>{error}</Notification>}
         {props.productsInfos.length === 0 && (
           <>
-            <h2 style={{ textAlign: "center" }}>Your cart is empty.</h2>
+            <h2 style={{ textAlign: "center" }}>
+              Your cart is empty.{" "}
+              <a style={{ color: "#000" }} href='/shop'>
+                Go back to shop
+              </a>
+            </h2>
           </>
         )}
         {props.productsInfos &&

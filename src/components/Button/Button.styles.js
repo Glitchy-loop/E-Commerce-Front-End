@@ -23,7 +23,7 @@ export const Button = styled.button`
     border-left: 0.15rem solid #000;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 900px) {
     padding: 0.5rem;
   }
 `

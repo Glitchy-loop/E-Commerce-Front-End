@@ -2,8 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import * as S from "./ProductDetailsView.styles"
 import Button from "../Button/Button"
-import { Product } from "../Product/Product.styles"
-import Container from "../Container/Container"
 
 const ProductDetailsView = ({
   img,

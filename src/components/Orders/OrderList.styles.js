@@ -28,3 +28,8 @@ export const Td = styled.td`
   padding: 1rem;
   text-align: center;
 `
+
+export const Content = styled.div`
+  max-height: 50rem;
+  overflow-y: auto;
+`

@@ -11,4 +11,5 @@ export const Hero = styled.div`
   background: url(${props => props.background}) no-repeat center;
   background-size: 100% auto;
   margin-bottom: 2rem;
+  text-transform: uppercase;
 `

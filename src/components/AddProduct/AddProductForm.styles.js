@@ -10,6 +10,10 @@ export const Form = styled.form`
     margin: 0;
   }
 
+  input {
+    background-color: #f8f8f8;
+  }
+
   input[type='text'],
   input[type='file'] {
     width: 100%;
@@ -17,6 +21,10 @@ export const Form = styled.form`
 
   input[type='radio'] {
     width: 10%;
+  }
+
+  input:focus {
+    background-color: #fff;
   }
 `
 

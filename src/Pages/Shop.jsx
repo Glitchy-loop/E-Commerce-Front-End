@@ -133,14 +133,14 @@ const Shop = () => {
           {categories && categories.length === 0 && (
             <div>No product categories were found.</div>
           )}
+          <SearchInput
+            placeholder='Search...'
+            handleSearch={(e) => searchProducts(e)}
+          />
           <CategoriesFilter
             categories={categories}
             handleClick={(e) => handleCategory(e)}
             showAll={() => displayAll()}
-          />
-          <SearchInput
-            placeholder='Product title or category...'
-            handleSearch={(e) => searchProducts(e)}
           />
           {error && <Notification>{error}</Notification>}
           {!products && <Loader />}

@@ -37,8 +37,8 @@ const Dashboard = () => {
         {roles === "0" && <DashboardNav links={links}></DashboardNav>}
 
         <p style={{ textAlign: "center" }}>
-          Welcome to your dashboard. From here you can view orders.
-          {roles === "1" && <span>And add, view, remove products.</span>}
+          Welcome to your dashboard. From here you can view orders
+          {roles === "1" && <span> and add, view, remove products.</span>}
         </p>
       </Container>
     </>

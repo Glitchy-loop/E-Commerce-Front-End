@@ -48,11 +48,7 @@ export const ProductDescription = styled.div`
   text-align: center;
 
   @media (max-width: 700px) {
-    position: absolute;
-    background-color: #ffede1;
-    padding: 1rem;
-    left: 0;
-    top: 5.5rem;
+    display: none;
   }
 `
 
