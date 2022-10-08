@@ -10,17 +10,17 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-right: 0.15rem solid #000;
-  border-bottom: 0.15rem solid #000;
-  border-top: transparent;
-  border-left: transparent;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
   transition: 250ms;
 
   &:active {
-    border-bottom: transparent;
-    border-right: transparent;
-    border-top: 0.15rem solid #000;
-    border-left: 0.15rem solid #000;
+    border-bottom: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-top: 2px solid #000;
+    border-left: 2px solid #000;
   }
 
   @media (max-width: 900px) {
