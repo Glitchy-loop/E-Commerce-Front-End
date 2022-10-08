@@ -1,21 +1,28 @@
 import React from "react"
 import PropTypes from "prop-types"
 import * as S from "./CategoriesFilter.styles"
+import { useState } from "react"
 
 const CategoriesFilter = ({ categories, handleClick, showAll }) => {
+  const [isFilterOpen, setIsFilterOpen] = useState(false)
   return (
     <>
-      <S.Categories>
-        {categories.map((category, index) => (
-          <S.Category
-            key={index}
-            onClick={(e) => handleClick(e.target.textContent.trim())}
-          >
-            {category}
-          </S.Category>
-        ))}
+      <S.FilterButton onClick={() => setIsFilterOpen((x) => !x)}>
+        Filter by category
+      </S.FilterButton>
+      <S.Categories isFilterOpen={isFilterOpen}>
+        <S.CategoryList>
+          {categories.map((category, index) => (
+            <S.Category
+              key={index}
+              onClick={(e) => handleClick(e.target.textContent.trim())}
+            >
+              {category}
+            </S.Category>
+          ))}
+        </S.CategoryList>
+        <S.Showall onClick={showAll}>Show all</S.Showall>
       </S.Categories>
-      <S.Showall onClick={showAll}>Show all</S.Showall>
     </>
   )
 }

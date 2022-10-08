@@ -21,8 +21,8 @@ export const Input = styled(motion.input)`
   border: none;
   width: 20%;
   text-align: center;
-  border-bottom: 2px solid grey;
-  border-right: 2px solid grey;
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
   margin-bottom: 2rem;
   border-top: 1px solid transparent;
   border-left: 1px solid transparent;
@@ -31,9 +31,9 @@ export const Input = styled(motion.input)`
   &:focus {
     border-color: #ed8136;
     width: 100%;
-    border: 2px solid grey;
-    border-top: 1px solid grey;
-    border-left: 1px solid grey;
+    border: 2px solid #000;
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
     background-color: #fff;
   }
 
