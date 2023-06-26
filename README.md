@@ -3,8 +3,8 @@
 
 ## DEMO https://comfort-e-commerce-front.web.app/
 
-### This is a Front-end part of an application that demonstrates E-commerce website. The application loads 
-products from MySQL database and displays them. Application provides registration form with `2 Roles` - Admin and Client
+### This is a Front-end part of an application that demonstrates E-commerce website. 
+The application loads products from MySQL database and displays them. Application provides registration form with `2 Roles` - Admin and Client
 
 ## Features :
 - User authentication with 2 different privileges
